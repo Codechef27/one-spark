@@ -3,3 +3,18 @@
 .logo {
   block-size: 100px;
 }
+
+.navTabs {
+  color: purple;
+}
+
+.navTabs:hover {
+  font-weight: bold;
+  color: purple;
+}
+
+.loginSignup {
+  font-size: large;
+  font-weight: bold;
+  color: purple;
+}

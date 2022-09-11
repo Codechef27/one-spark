@@ -66,7 +66,7 @@ const LoginForm = () => {
           <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Label htmlFor='password'></Form.Label>
           <Form.Control
             type='password'
             placeholder='Your password'
@@ -80,7 +80,8 @@ const LoginForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.password)}
           type='submit'
-          variant='success'>
+          variant='outline-success'
+          className='mt-2'>
           Submit
         </Button>
       </Form>
