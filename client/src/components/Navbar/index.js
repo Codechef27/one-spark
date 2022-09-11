@@ -14,20 +14,20 @@ import Auth from '../../utils/auth';
         <Navbar bg="light" variant="light" expand="lg">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
-              <img className="logo" href="/" src={logo} alt="one spark logo" />
+              <img  className="logo" href="/" src={logo} alt="one spark logo" />
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbar" />
-            <Navbar.Collapse id="navbar">
+            <Navbar.Toggle aria-controls="navbar" className='justify-content-end'/>
+            <Navbar.Collapse id="navbar" className='justify-content-end'>
               <Nav className="ml-auto">
                 {Auth.loggedIn() ? (
                   <>
-                    <Nav.Link as={Link} to="/scores">
+                    <Nav.Link  as={Link} to="/scores">
                       See Your Scores
                     </Nav.Link>
                     <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                   </>
                 ) : (
-                  <Nav.Link onClick={() => setShowModal(true)}>
+                  <Nav.Link className='loginSignup' onClick={() => setShowModal(true)}>
                     Login/Sign Up
                   </Nav.Link>
                 )}
@@ -36,19 +36,19 @@ import Auth from '../../utils/auth';
           </Container>
         </Navbar>
         <Modal
-          size="lg"
+          size="md"
           show={showModal}
           onHide={() => setShowModal(false)}
           aria-labelledby="signup-modal">
           <Tab.Container defaultActiveKey="login">
             <Modal.Header closeButton>
               <Modal.Title id="signup-modal">
-                <Nav variant="pills">
+                <Nav>
                   <Nav.Item>
-                    <Nav.Link eventKey="login">Login</Nav.Link>
+                    <Nav.Link className='navTabs' eventKey="login">Login</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="signup">Sign Up</Nav.Link>
+                    <Nav.Link className='navTabs' eventKey="signup">Sign Up</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Modal.Title>

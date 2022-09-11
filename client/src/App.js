@@ -33,7 +33,7 @@ function App() {
         <>
         <Navbar />
         <Routes>
-          <Route />
+          <Route path='/'/>
           <Route />
           <Route />
           <Route />

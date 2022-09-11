@@ -51,7 +51,7 @@ const SignupForm = () => {
         </Alert>
 
         <Form.Group>
-          <Form.Label htmlFor='username'>Username</Form.Label>
+          <Form.Label htmlFor='username'></Form.Label>
           <Form.Control
             type='text'
             placeholder='Your username'
@@ -64,7 +64,7 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='email'>Email</Form.Label>
+          <Form.Label htmlFor='email'></Form.Label>
           <Form.Control
             type='email'
             placeholder='Your email address'
@@ -77,7 +77,7 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Label htmlFor='password'></Form.Label>
           <Form.Control
             type='password'
             placeholder='Your password'
@@ -91,7 +91,8 @@ const SignupForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
-          variant='success'>
+          variant='outline-success'
+          className='mt-2'>
           Submit
         </Button>
       </Form>
