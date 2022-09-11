@@ -68,13 +68,26 @@ const resolvers = {
         throw new AuthenticationError('Not logged in');
     },
 
-    addRecord: async (parent, { game }, context) => {
+    addRecord: async (parent, { recordData }, context) => {
         if (context.user) {
-          const record = new Record({ game });
+          const updatedUser = await User.findOneAndUpdate(
+            {_id: context.user._id},
+            {$addToSet: { records: recordData } }
+          )
+        }
   
-          await User.findByIdAndUpdate(context.user._id, { $push: { records: record } });
+        throw new AuthenticationError('Not logged in');
+
+    }, 
+
+    deleteRecord: async (parent, { recordId }, context) => {
+        if (context.user) {
+          const updateUser =  await User.findByIdAndUpdate(
+            {_id: context.user._id},
+            { $pull: {records: {recordId: recordId } } }
+            );
   
-          return record;
+          return updateUser;
         }
   
         throw new AuthenticationError('Not logged in');
