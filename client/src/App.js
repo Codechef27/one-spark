@@ -11,6 +11,7 @@ import Animals from './pages/Animals';
 import ABCGame from "./pages/ABC'S";
 import Numbers from './pages/Numbers';
 import Records from './pages/Records';
+import Home from './pages/Home'
 
 
 const httpLink = createHttpLink({
@@ -42,8 +43,11 @@ function App() {
         <>
         <Navbar />
         <GameNav />
+        <>
+        
+        </>
         <Routes>
-          <Route exact path='/'/>
+          <Route exact path='/' element={<Home/>}/>
           <Route path='/records' element={<Records />} />
           <Route path='/minecraft' element={<Minecraft/>} />
           <Route path='/minions' element={<Minions/>}/> 
