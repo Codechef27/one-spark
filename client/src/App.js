@@ -3,6 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from "@apollo/client/link/context";
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Navbar from './components/Navbar'
+import GameNav from './components/GameNav';
+import Minecraft from './pages/Minecraft';
+import Minions from './pages/Minions';
+import Princesses from './pages/Princesses';
+import Animals from './pages/Animals';
+import ABCGame from "./pages/ABC'S";
+import Numbers from './pages/Numbers';
+import Records from './pages/Records';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -32,12 +41,16 @@ function App() {
       <Router>
         <>
         <Navbar />
+        <GameNav />
         <Routes>
-          <Route path='/'/>
-          <Route />
-          <Route />
-          <Route />
-          <Route />
+          <Route exact path='/'/>
+          <Route path='/records' element={<Records />} />
+          <Route path='/minecraft' element={<Minecraft/>} />
+          <Route path='/minions' element={<Minions/>}/> 
+          <Route path='/princesses' element={<Princesses/>}/>
+          <Route path='/animals' element={<Animals/>}/>
+          <Route path="/abc's" element={<ABCGame/>}/>
+          <Route path="/numbers" element={<Numbers/>}/>
         </Routes>
         </>
       </Router>
