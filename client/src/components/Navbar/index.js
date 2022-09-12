@@ -11,7 +11,7 @@ import Auth from '../../utils/auth';
 
     return (
       <>
-        <Navbar bg="light" variant="light" expand="lg">
+        <Navbar bg="light" variant="light">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
               <img  className="logo" href="/" src={logo} alt="one spark logo" />
@@ -21,8 +21,8 @@ import Auth from '../../utils/auth';
               <Nav className="ml-auto">
                 {Auth.loggedIn() ? (
                   <>
-                    <Nav.Link  as={Link} to="/scores">
-                      See Your Scores
+                    <Nav.Link  as={Link} to="/records">
+                      See Your Records
                     </Nav.Link>
                     <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                   </>
