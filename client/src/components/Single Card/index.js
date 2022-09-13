@@ -1,5 +1,4 @@
 import './SingleCard.css';
-// import 'sword' from '../../Games/images/sword.png';
 
 export default function SingleCard({ card, handleChoice, flipped, disabled }) {
 
