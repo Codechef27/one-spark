@@ -18,3 +18,12 @@
   font-weight: bold;
   color: purple;
 }
+
+body {
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  margin: 0;
+  font-size: 1.5em;
+  text-align: center;
+  background: purple;
+  color: white;
+}

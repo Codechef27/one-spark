@@ -11,7 +11,8 @@ import Animals from './pages/Animals';
 import ABCGame from "./pages/ABC'S";
 import Numbers from './pages/Numbers';
 import Records from './pages/Records';
-import Home from './pages/Home'
+import Home from './pages/Home';
+
 
 
 const httpLink = createHttpLink({
