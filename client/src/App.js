@@ -5,11 +5,11 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import Navbar from './components/Navbar'
 import GameNav from './components/GameNav';
 import Minecraft from './pages/Minecraft';
-import Minions from './pages/Minions';
-import Princesses from './pages/Princesses';
-import Animals from './pages/Animals';
-import ABCGame from "./pages/ABC'S";
-import Numbers from './pages/Numbers';
+// import Minions from './pages/Minions';
+// import Princesses from './pages/Princesses';
+// import Animals from './pages/Animals';
+// import ABCGame from "./pages/ABC'S";
+// import Numbers from './pages/Numbers';
 import Records from './pages/Records';
 import Home from './pages/Home';
 
@@ -50,12 +50,12 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/records' element={<Records />} />
-          <Route path='/minecraft' element={<Minecraft/>} />
-          <Route path='/minions' element={<Minions/>}/> 
+          <Route path='game/:card' element={<Minecraft/>} />
+          {/* <Route path='/minions' element={<Minions/>}/> 
           <Route path='/princesses' element={<Princesses/>}/>
           <Route path='/animals' element={<Animals/>}/>
           <Route path="/abc's" element={<ABCGame/>}/>
-          <Route path="/numbers" element={<Numbers/>}/>
+          <Route path="/numbers" element={<Numbers/>}/> */}
         </Routes>
         </>
       </Router>
