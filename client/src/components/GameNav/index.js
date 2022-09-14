@@ -14,13 +14,13 @@ const GameNav = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
-              <Nav.Link as={Link} to='/minecraft'> Minecraft</Nav.Link>
-              <Nav.Link as={Link} to='/minions'>Minions</Nav.Link>
-              <Nav.Link as={Link} to='/princesses'>Princesses</Nav.Link>
-              <Nav.Link as={Link} to='/animals'>Animals</Nav.Link>
+              <Nav.Link as={Link} to='game/minecraft'> Minecraft</Nav.Link>
+              {/* <Nav.Link as={Link} to='game/minions'>Minions</Nav.Link> */}
+              {/* <Nav.Link as={Link} to='game/princesses'>Princesses</Nav.Link> */}
+              <Nav.Link as={Link} to='game/animals'>Dinosaurs</Nav.Link>
               <NavDropdown title="Educational" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/abc's">ABC'S</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/numbers">Numbers</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="game/abc's">ABC'S</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="game/numbers">Numbers</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

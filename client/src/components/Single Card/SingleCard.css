@@ -1,5 +1,6 @@
 .card {
     position: relative;
+    
 }
 
 .card img {
@@ -7,6 +8,10 @@
     display: block;
     border: 2px solid #fff;
     border-radius: 6px;
+}
+.front, .back{
+    height: 300px;
+    width:300px;
 }
 
 /*  front of card -the picture */
@@ -18,6 +23,7 @@
 .flipped .front {
     transform: rotateY(0deg);
     transition-delay: 0.2s;
+    
 }
 
 /* back of card - cover */

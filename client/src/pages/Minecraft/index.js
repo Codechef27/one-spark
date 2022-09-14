@@ -1,26 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
 import '../../App.css';
 import SingleCard from '../../components/Single Card';
-import creeper from '../../Games/images/creeper.png'
-import gold from '../../Games/images/gold.png'
-import pickaxe from '../../Games/images/pickaxe.png'
-import Stuart from '../../Games/images/Stuart.png'
-import sword from '../../Games/images/sword.png'
-import zombie from '../../Games/images/zombie.png'
+import logo from '../../Games/images/art-logo.png'
+// import colorful from '../../Games/images/mine';
+// import creeper from '../../Games/images/creeper.jpg';
 
-const cardImages = [
-    { "src": creeper, matched: false },
-    { "src": gold, matched: false },
-    { "src": pickaxe, matched: false },
-    { "src": Stuart, matched: false },
-    { "src": sword, matched: false },
-    { "src": zombie, matched: false },
-    
 
-]
 
 
 const Minecraft = () => {
+    const { card } = useParams();
+    let cardImages;
+    switch (card) {
+        case 'dinosaurs':
+            cardImages = [
+                // { "src": colorful, matched: false },
+                { src: 'https://github.com/Codechef27/one-spark/blob/main/client/src/Games/images/Stuart.png?raw=true', matched: false, cardBack: 'https://github.com/Codechef27/one-spark/blob/main/client/src/Games/images/gold.png?raw=true' },
+                // { "src": pickaxe, matched: false },
+                // { "src": Stuart, matched: false },
+                // { "src": sword, matched: false },
+                // { "src": zombie, matched: false },
+
+
+            ]
+            break;
+        case 'minecraft':
+            cardImages = [
+                // { "src": colorful, matched: false },
+                { src: 'https://github.com/Codechef27/one-spark/blob/main/client/src/Games/images/creeper.png?raw=true', matched: false, cardBack: logo },
+                // { "src": pickaxe, matched: false },
+                // { "src": Stuart, matched: false },
+                // { "src": sword, matched: false },
+                // { "src": zombie, matched: false },
+
+
+            ]
+            break;
+        case 'princesses':
+            cardImages = [
+                // { "src": colorful, matched: false },
+                { "src": 'https://github.com/Codechef27/one-spark/blob/main/client/src/Games/images/creeper.png?raw=true', matched: false },
+                // { "src": pickaxe, matched: false },
+                // { "src": Stuart, matched: false },
+                // { "src": sword, matched: false },
+                // { "src": zombie, matched: false },
+
+
+            ]
+            break;
+        case 'animals':
+            cardImages = [
+                // { "src": colorful, matched: false },
+                { "src": 'https://github.com/Codechef27/one-spark/blob/main/client/src/Games/images/creeper.png?raw=true', matched: false },
+                // { "src": pickaxe, matched: false },
+                // { "src": Stuart, matched: false },
+                // { "src": sword, matched: false },
+                // { "src": zombie, matched: false },
+
+
+            ]
+            break;
+        default:
+            break;
+    }
+
 
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
@@ -56,7 +100,7 @@ const Minecraft = () => {
                 setCards(prevCards => {
                     return prevCards.map(card => {
                         if (card.src === choiceOne.src) {
-                            return {...card, matched: true}
+                            return { ...card, matched: true }
                         } else {
                             return card
                         }
@@ -70,7 +114,7 @@ const Minecraft = () => {
         }
     }, [choiceOne, choiceTwo])
 
-    console.log(cards)
+
 
     //reset choices and increase turn
     const resetTurn = () => {
@@ -83,7 +127,8 @@ const Minecraft = () => {
     //start a new game automatically 
     useEffect(() => {
         shuffleCards()
-    }, [])
+        console.log(cards)
+    }, [card])
 
 
     return (
