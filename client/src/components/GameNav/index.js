@@ -15,13 +15,15 @@ const GameNav = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
               <Nav.Link as={Link} to='game/minecraft'> Minecraft</Nav.Link>
-              {/* <Nav.Link as={Link} to='game/minions'>Minions</Nav.Link> */}
-              {/* <Nav.Link as={Link} to='game/princesses'>Princesses</Nav.Link> */}
+
+              <Nav.Link as={Link} to='game/alphabet'>Alphabet</Nav.Link>
+              <Nav.Link as={Link} to='game/princesses'>Princesses</Nav.Link>
               <Nav.Link as={Link} to='game/dinosaurs'>Dinosaurs</Nav.Link>
-              <NavDropdown title="Educational" id="basic-nav-dropdown">
+              {/* <NavDropdown title="Educational" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="game/abc's">ABC'S</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="game/numbers">Numbers</NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
+
             </Nav>
           </Navbar.Collapse>
         </Container>

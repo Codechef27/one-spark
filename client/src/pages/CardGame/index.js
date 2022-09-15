@@ -57,6 +57,23 @@ import x from '../../images/alphabet/x-card.jpg'
 import y from '../../images/alphabet/y-card.jpg'
 import z from '../../images/alphabet/z-card.jpg'
 
+//princesses
+import princessCover from '../../images/princesses/cover-princess.jpg'
+import ariel from '../../images/princesses/Ariel.jpg'
+import aurora from '../../images/princesses/Aurora.jpg'
+import belle from '../../images/princesses/Belle.jpg'
+import elsa from '../../images/princesses/elsa.jpg'
+import jasmine from '../../images/princesses/Jasmine.jpg'
+import merida from '../../images/princesses/Merida.jpg'
+import pocahontas from '../../images/princesses/Pocahontas.jpg'
+import rapunzel from '../../images/princesses/Rapunzel.jpg'
+import raya from '../../images/princesses/Raya.jpg'
+import tiana from '../../images/princesses/tiana.jpg'
+
+
+
+
+
 
 const CardGame = () => {
     const { card } = useParams();
@@ -64,7 +81,7 @@ const CardGame = () => {
     switch (card) {
         case 'dinosaurs':
             cardImages = [
-                
+
                 { src: dino1, matched: false, cardBack: dinoCardCover },
                 { src: dino2, matched: false, cardBack: dinoCardCover },
                 { src: dino3, matched: false, cardBack: dinoCardCover },
@@ -124,17 +141,20 @@ const CardGame = () => {
                 { src: z, matched: false, cardBack: alphabetCover }
             ]
             break;
-        // case 'animals':
-        //     cardImages = [
-        //         // // { "src": colorful, matched: false },
-        //         // { "src": 'https://raw.githubusercontent.com/Codechef27/one-spark/main/client/src/Games/images/minecraft/Steve-Sitting-Down.jpg', matched: false },
-        //         // // { "src": pickaxe, matched: false },
-        //         // // { "src": Stuart, matched: false },
-        //         // // { "src": sword, matched: false },
-        //         // // { "src": zombie, matched: false },
-        //     ]
-        //     break;
-        default:
+            case 'princesses':
+                cardImages = [
+                    { src: ariel, matched: false, cardBack: princessCover },
+                    { src: aurora, matched: false, cardBack: princessCover },
+                    { src: belle, matched: false, cardBack: princessCover },
+                    { src: elsa, matched: false, cardBack: princessCover },
+                    { src: jasmine, matched: false, cardBack: princessCover },
+                    { src: merida, matched: false, cardBack: princessCover },
+                    { src: pocahontas, matched: false, cardBack: princessCover },
+                    { src: rapunzel, matched: false, cardBack: princessCover },
+                    { src: raya, matched: false, cardBack: princessCover },
+                    { src: tiana, matched: false, cardBack: princessCover }
+                ]
+            default:
             break;
     }
 
@@ -204,6 +224,22 @@ const CardGame = () => {
     }, [card])
 
 
+    //if all cards are matched then win-- win page get 10 points and option to play again/next level
+    //or would this be better in the existing logic as else if?
+    // const win = () => {
+    //     if(cards.matched) {
+
+    //     }
+    // }
+
+    //level 1- 6 cards/level 2- 10/level 3- 14 /add 10 sparks for each win
+
+
+
+    //if turns ===20 then game over page, option to play again, or would this be better in the 
+    //existing logic as else if?
+
+
     return (
         <div className="App">
             <h1>{card}</h1>
@@ -220,7 +256,9 @@ const CardGame = () => {
                     />
                 ))}
             </div>
-            <p>Turns: {turns}</p>
+
+            <p className="turns">Turns: {turns}</p>
+
         </div>
     )
 }
