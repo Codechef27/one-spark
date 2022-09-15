@@ -1,5 +1,5 @@
 import React from 'react';
-import loopedVid from '../../Games/images/loop-blocks.mp4';
+import loopedVid from '../../images/loop-blocks.mp4';
 import Contact from '../Contact'
 
 const HomePage = () => { 
