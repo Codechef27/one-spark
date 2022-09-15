@@ -9,10 +9,7 @@
     border: 2px solid #fff;
     border-radius: 6px;
 }
-.front, .back{
-    height: 300px;
-    width:300px;
-}
+
 
 /*  front of card -the picture */
 .card .front {

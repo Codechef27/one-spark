@@ -4,7 +4,7 @@ import { setContext } from "@apollo/client/link/context";
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Navbar from './components/Navbar'
 import GameNav from './components/GameNav';
-import Minecraft from './pages/Minecraft';
+import CardGame from './pages/CardGame';
 // import Minions from './pages/Minions';
 // import Princesses from './pages/Princesses';
 // import Animals from './pages/Animals';
@@ -50,7 +50,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/records' element={<Records />} />
-          <Route path='game/:card' element={<Minecraft/>} />
+          <Route path='game/:card' element={<CardGame/>} />
           {/* <Route path='/minions' element={<Minions/>}/> 
           <Route path='/princesses' element={<Princesses/>}/>
           <Route path='/animals' element={<Animals/>}/>
