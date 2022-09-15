@@ -45,7 +45,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/records' element={<Records />} />
-          <Route path='game/:card' element={<CardGame/>} /
+          <Route path='game/:card' element={<CardGame/>} />
         </Routes>
         </>
       </Router>
