@@ -56,6 +56,7 @@ import w from '../../images/alphabet/w-card.jpg'
 import x from '../../images/alphabet/x-card.jpg'
 import y from '../../images/alphabet/y-card.jpg'
 import z from '../../images/alphabet/z-card.jpg'
+
 //princesses
 import princessCover from '../../images/princesses/cover-princess.jpg'
 import ariel from '../../images/princesses/Ariel.jpg'
@@ -222,6 +223,7 @@ const CardGame = () => {
         console.log(cards)
     }, [card])
 
+
     //if all cards are matched then win-- win page get 10 points and option to play again/next level
     //or would this be better in the existing logic as else if?
     // const win = () => {
@@ -236,7 +238,6 @@ const CardGame = () => {
 
     //if turns ===20 then game over page, option to play again, or would this be better in the 
     //existing logic as else if?
-
 
 
     return (
@@ -255,7 +256,9 @@ const CardGame = () => {
                     />
                 ))}
             </div>
+
             <p className="turns">Turns: {turns}</p>
+
         </div>
     )
 }
