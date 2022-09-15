@@ -154,6 +154,7 @@ const CardGame = () => {
                     { src: raya, matched: false, cardBack: princessCover },
                     { src: tiana, matched: false, cardBack: princessCover }
                 ]
+                break;
             default:
             break;
     }
