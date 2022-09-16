@@ -45,7 +45,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit}  style={{ width: '260px' }} className='mx-auto'>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Your username or email needs to be unique!
         </Alert>
@@ -91,7 +91,7 @@ const SignupForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
-          variant='outline-success'
+          variant='success'
           className='mt-2'>
           Submit
         </Button>

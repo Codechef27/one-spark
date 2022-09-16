@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from "@apollo/client/link/context";
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import Navbar from './components/Navbar'
-import GameNav from './components/GameNav';
+import SecondaryNav from './components/SecondaryNav';
 import CardGame from './pages/CardGame';
 import Records from './pages/Records';
 import Home from './pages/Home';
+
 
 
 
@@ -38,10 +39,7 @@ function App() {
       <Router>
         <>
         <Navbar />
-        <GameNav />
-        <>
-        
-        </>
+        <SecondaryNav />
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/records' element={<Records />} />

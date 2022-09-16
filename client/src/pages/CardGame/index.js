@@ -13,18 +13,18 @@ import dino6 from '../../images/dinosaurs/dino-6.jpg'
 import dino7 from '../../images/dinosaurs/dino-7.jpg'
 import dino8 from '../../images/dinosaurs/dino-8.jpg'
 import dino9 from '../../images/dinosaurs/dino-9.jpg'
-import dino10 from '../../images/dinosaurs/dino-10.jpg'
+// import dino10 from '../../images/dinosaurs/dino-10.jpg'
 //minecraft
 import minecraftCover from '../../images/minecraft/minecraft-cover.jpg'
 import colorful from '../../images/minecraft/colorful.jpg'
 import creeper from '../../images/minecraft/creeper.jpg'
 import diamondArmor from '../../images/minecraft/diamond-armor.jpg'
-import diamondOre from '../../images/minecraft/diamond-ore.jpg'
-import diamonds from '../../images/minecraft/diamonds.jpg'
+// import diamondOre from '../../images/minecraft/diamond-ore.jpg'
+// import diamonds from '../../images/minecraft/diamonds.jpg'
 import enderDragon from '../../images/minecraft/ender-dragon.jpg'
 import hanginOut from '../../images/minecraft/hangin-out.jpg'
 import minecraftSword from '../../images/minecraft/minecraft-sword.jpg'
-import pandas from '../../images/minecraft/pandas.jpg'
+// import pandas from '../../images/minecraft/pandas.jpg'
 import portal from '../../images/minecraft/portal.jpg'
 import steve from '../../images/minecraft/Steve-Sitting-Down.jpg'
 import villager from '../../images/minecraft/villager.jpg'
@@ -60,7 +60,7 @@ import z from '../../images/alphabet/z-card.jpg'
 //princesses
 import princessCover from '../../images/princesses/cover-princess.jpg'
 import ariel from '../../images/princesses/Ariel.jpg'
-import aurora from '../../images/princesses/Aurora.jpg'
+// import aurora from '../../images/princesses/Aurora.jpg'
 import belle from '../../images/princesses/Belle.jpg'
 import elsa from '../../images/princesses/elsa.jpg'
 import jasmine from '../../images/princesses/Jasmine.jpg'
@@ -71,7 +71,7 @@ import raya from '../../images/princesses/Raya.jpg'
 import tiana from '../../images/princesses/tiana.jpg'
 
 //minions
-import djminion from '../../images/minions/dj-minions.jpg'
+// import djminion from '../../images/minions/dj-minions.jpg'
 import jelli from '../../images/minions/jelli-taste.jpg'
 import cupcake from '../../images/minions/minion-cupcake.jpg'
 import iluvgru from '../../images/minions/minion-ilovegruhat.jpg'
@@ -95,7 +95,7 @@ import six from '../../images/numbers/six.jpg'
 import seven from '../../images/numbers/seven.jpg'
 import eight from '../../images/numbers/eight.jpg'
 import nine from '../../images/numbers/nine.jpg'
-import ten from '../../images/numbers/ten.jpg'
+// import ten from '../../images/numbers/ten.jpg'
 
 
 
@@ -115,7 +115,7 @@ const CardGame = () => {
                 { src: dino7, matched: false, cardBack: dinoCardCover },
                 { src: dino8, matched: false, cardBack: dinoCardCover },
                 { src: dino9, matched: false, cardBack: dinoCardCover },
-                { src: dino10, matched: false, cardBack: dinoCardCover }
+                // { src: dino10, matched: false, cardBack: dinoCardCover }
 
             ]
             break;
@@ -124,12 +124,12 @@ const CardGame = () => {
                 { src: colorful, matched: false, cardBack: minecraftCover },
                 { src: creeper, matched: false, cardBack: minecraftCover },
                 { src: diamondArmor, matched: false, cardBack: minecraftCover },
-                { src: diamondOre, matched: false, cardBack: minecraftCover },
-                { src: diamonds, matched: false, cardBack: minecraftCover },
+                // { src: diamondOre, matched: false, cardBack: minecraftCover },
+                // { src: diamonds, matched: false, cardBack: minecraftCover },
                 { src: enderDragon, matched: false, cardBack: minecraftCover },
                 { src: hanginOut, matched: false, cardBack: minecraftCover },
                 { src: minecraftSword, matched: false, cardBack: minecraftCover },
-                { src: pandas, matched: false, cardBack: minecraftCover },
+                // { src: pandas, matched: false, cardBack: minecraftCover },
                 { src: portal, matched: false, cardBack: minecraftCover },
                 { src: steve, matched: false, cardBack: minecraftCover },
                 { src: villager, matched: false, cardBack: minecraftCover }
@@ -168,7 +168,7 @@ const CardGame = () => {
             case 'Princesses':
                 cardImages = [
                     { src: ariel, matched: false, cardBack: princessCover },
-                    { src: aurora, matched: false, cardBack: princessCover },
+                    // { src: aurora, matched: false, cardBack: princessCover },
                     { src: belle, matched: false, cardBack: princessCover },
                     { src: elsa, matched: false, cardBack: princessCover },
                     { src: jasmine, matched: false, cardBack: princessCover },
@@ -182,7 +182,7 @@ const CardGame = () => {
             
             case 'Minions':
                 cardImages = [
-                    { src: djminion, matched: false, cardBack: minionCover },
+                    // { src: djminion, matched: false, cardBack: minionCover },
                     { src: jelli, matched: false, cardBack: minionCover },
                     { src: number1, matched: false, cardBack: minionCover },
                     { src: group, matched: false, cardBack: minionCover },
@@ -205,7 +205,7 @@ const CardGame = () => {
                         { src: seven, matched: false, cardBack: coverNumber },
                         { src: eight, matched: false, cardBack: coverNumber },
                         { src: nine, matched: false, cardBack: coverNumber },
-                        { src: ten, matched: false, cardBack: coverNumber }
+                        // { src: ten, matched: false, cardBack: coverNumber }
                     ]
                     break;
                 default:

@@ -1,5 +1,5 @@
 .App {
-    max-width: 860px;
+    max-width: 90%;
     margin: 40px auto;
 
 
@@ -24,8 +24,8 @@ button:hover {
 .card-grid {
     margin-top: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1%;
 }
 .turns {
     padding: 25px 
