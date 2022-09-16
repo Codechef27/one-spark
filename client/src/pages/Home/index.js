@@ -5,7 +5,7 @@ import Contact from '../Contact'
 const HomePage = () => { 
     
     return (
-      <body>
+      <>
       <video
         autoPlay
         loop
@@ -24,7 +24,7 @@ const HomePage = () => {
       </video>
       
      {/* <Contact/> */}
-     </body>
+     </>
     );
 
 }
