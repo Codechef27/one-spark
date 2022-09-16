@@ -165,50 +165,50 @@ const CardGame = () => {
                 { src: z, matched: false, cardBack: alphabetCover }
             ]
             break;
-            case 'Princesses':
-                cardImages = [
-                    { src: ariel, matched: false, cardBack: princessCover },
-                    // { src: aurora, matched: false, cardBack: princessCover },
-                    { src: belle, matched: false, cardBack: princessCover },
-                    { src: elsa, matched: false, cardBack: princessCover },
-                    { src: jasmine, matched: false, cardBack: princessCover },
-                    { src: merida, matched: false, cardBack: princessCover },
-                    { src: pocahontas, matched: false, cardBack: princessCover },
-                    { src: rapunzel, matched: false, cardBack: princessCover },
-                    { src: raya, matched: false, cardBack: princessCover },
-                    { src: tiana, matched: false, cardBack: princessCover }
-                ]
-                break;
-            
-            case 'Minions':
-                cardImages = [
-                    // { src: djminion, matched: false, cardBack: minionCover },
-                    { src: jelli, matched: false, cardBack: minionCover },
-                    { src: number1, matched: false, cardBack: minionCover },
-                    { src: group, matched: false, cardBack: minionCover },
-                    { src: iluvgru, matched: false, cardBack: minionCover},
-                    { src: cupcake, matched: false, cardBack: minionCover },
-                    { src: party, matched: false, cardBack: minionCover },
-                    { src: laughing, matched: false, cardBack: minionCover },
-                    { src: nogood, matched: false, cardBack: minionCover },
-                    { src: worker, matched: false, cardBack: minionCover }
-                ]
-                break;
-                case 'Numbers':
-                    cardImages = [
-                        { src: one, matched: false, cardBack: coverNumber },
-                        { src: two, matched: false, cardBack: coverNumber },
-                        { src: three, matched: false, cardBack: coverNumber },
-                        { src: four, matched: false, cardBack: coverNumber },
-                        { src: five, matched: false, cardBack: coverNumber },
-                        { src: six, matched: false, cardBack: coverNumber },
-                        { src: seven, matched: false, cardBack: coverNumber },
-                        { src: eight, matched: false, cardBack: coverNumber },
-                        { src: nine, matched: false, cardBack: coverNumber },
-                        // { src: ten, matched: false, cardBack: coverNumber }
-                    ]
-                    break;
-                default:
+        case 'Princesses':
+            cardImages = [
+                { src: ariel, matched: false, cardBack: princessCover },
+                // { src: aurora, matched: false, cardBack: princessCover },
+                { src: belle, matched: false, cardBack: princessCover },
+                { src: elsa, matched: false, cardBack: princessCover },
+                { src: jasmine, matched: false, cardBack: princessCover },
+                { src: merida, matched: false, cardBack: princessCover },
+                { src: pocahontas, matched: false, cardBack: princessCover },
+                { src: rapunzel, matched: false, cardBack: princessCover },
+                { src: raya, matched: false, cardBack: princessCover },
+                { src: tiana, matched: false, cardBack: princessCover }
+            ]
+            break;
+
+        case 'Minions':
+            cardImages = [
+                // { src: djminion, matched: false, cardBack: minionCover },
+                { src: jelli, matched: false, cardBack: minionCover },
+                { src: number1, matched: false, cardBack: minionCover },
+                { src: group, matched: false, cardBack: minionCover },
+                { src: iluvgru, matched: false, cardBack: minionCover },
+                { src: cupcake, matched: false, cardBack: minionCover },
+                { src: party, matched: false, cardBack: minionCover },
+                { src: laughing, matched: false, cardBack: minionCover },
+                { src: nogood, matched: false, cardBack: minionCover },
+                { src: worker, matched: false, cardBack: minionCover }
+            ]
+            break;
+        case 'Numbers':
+            cardImages = [
+                { src: one, matched: false, cardBack: coverNumber },
+                { src: two, matched: false, cardBack: coverNumber },
+                { src: three, matched: false, cardBack: coverNumber },
+                { src: four, matched: false, cardBack: coverNumber },
+                { src: five, matched: false, cardBack: coverNumber },
+                { src: six, matched: false, cardBack: coverNumber },
+                { src: seven, matched: false, cardBack: coverNumber },
+                { src: eight, matched: false, cardBack: coverNumber },
+                { src: nine, matched: false, cardBack: coverNumber },
+                // { src: ten, matched: false, cardBack: coverNumber }
+            ]
+            break;
+        default:
             break;
     }
 
@@ -218,6 +218,7 @@ const CardGame = () => {
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
+    const [win, setWin] = useState(false);
 
     //shuffle cards
     const shuffleCards = () => {
@@ -239,7 +240,7 @@ const CardGame = () => {
 
         // }
     }
-    console.log(cards, turns)
+    // console.log(cards, turns)
 
     // handle a choice 
     const handleChoice = (card) => {
@@ -287,38 +288,41 @@ const CardGame = () => {
     }, [card])
 
 
-    //if all cards are matched then win-- win page get 10 points and option to play again/next level
-    //or would this be better in the existing logic as else if?
-    // const win = () => {
-    //     if(cards.matched) {
 
-    //     }
-    // }
+    //if all cards are matched then win--  get 10 points and option to play again/next level
+
+    const matchedData = (cards.filter(card => card.matched === false));
+         if (matchedData.length === 0) {
+            // setWin(true) -- this line is breaking it
+        }
+
+
 
     //level 1- 6 cards/level 2- 10/level 3- 14 /add 10 sparks for each win
 
 
 
-    //if turns ===20 then game over page, option to play again, or would this be better in the 
-    //existing logic as else if?
+    //if turns ===45 then game over ---- this is on line 312
 
 
     return (
         <div className="App">
             <h1>{card}</h1>
             <button onClick={shuffleCards}>New Game</button>
+            {turns === 45 ? (<h1>Game Over, play again?</h1>) : (
+                <div className="card-grid">
+                    {cards.map(card => (
+                        <SingleCard
+                            key={card.id}
+                            card={card}
+                            handleChoice={handleChoice}
+                            flipped={card === choiceOne || card === choiceTwo || card.matched}
+                            disabled={disabled}
+                        />
+                    ))}
+                </div>
+            )}
 
-            <div className="card-grid">
-                {cards.map(card => (
-                    <SingleCard
-                        key={card.id}
-                        card={card}
-                        handleChoice={handleChoice}
-                        flipped={card === choiceOne || card === choiceTwo || card.matched}
-                        disabled={disabled}
-                    />
-                ))}
-            </div>
 
             <p className="turns">Turns: {turns}</p>
 
