@@ -1,12 +1,13 @@
 
 
 .logo {
-  block-size: 100px;
+  width: 300px;
+  margin: auto;
 }
 
 .navTabs {
   color: purple;
-}
+} 
 
 .navTabs:hover {
   font-weight: bold;
@@ -27,3 +28,11 @@ body {
   background: purple;
   color: white;
 }
+
+/* .contact {
+
+  position: absolute;
+  color: black;
+  left: 500px ;
+  top: 400px;
+} */
