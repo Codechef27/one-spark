@@ -1,6 +1,7 @@
 .card {
     position: relative;
-    
+    background-color: purple;
+    border: none;
 }
 
 .card img {

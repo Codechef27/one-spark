@@ -70,8 +70,32 @@ import rapunzel from '../../images/princesses/Rapunzel.jpg'
 import raya from '../../images/princesses/Raya.jpg'
 import tiana from '../../images/princesses/tiana.jpg'
 
+//minions
+import djminion from '../../images/minions/dj-minions.jpg'
+import jelli from '../../images/minions/jelli-taste.jpg'
+import cupcake from '../../images/minions/minion-cupcake.jpg'
+import iluvgru from '../../images/minions/minion-ilovegruhat.jpg'
+import laughing from '../../images/minions/minion-laughing.jpg'
+import nogood from '../../images/minions/minion-uptonogood.jpg'
+import group from '../../images/minions/minions-cover.jpg'
+import minionCover from '../../images/minions/minions-group.jpg'
+import party from '../../images/minions/minions-party.jpg'
+import number1 from '../../images/minions/number1-dad.jpg'
+import worker from '../../images/minions/worker-minions.jpg'
 
+//numbers
 
+import coverNumber from '../../images/numbers/colorful-number-cover.jpg'
+import one from '../../images/numbers/one.jpg'
+import two from '../../images/numbers/two.jpg'
+import three from '../../images/numbers/three.jpg'
+import four from '../../images/numbers/four.jpg'
+import five from '../../images/numbers/five.jpg'
+import six from '../../images/numbers/six.jpg'
+import seven from '../../images/numbers/seven.jpg'
+import eight from '../../images/numbers/eight.jpg'
+import nine from '../../images/numbers/nine.jpg'
+import ten from '../../images/numbers/ten.jpg'
 
 
 
@@ -79,7 +103,7 @@ const CardGame = () => {
     const { card } = useParams();
     let cardImages;
     switch (card) {
-        case 'dinosaurs':
+        case 'Dinosaurs':
             cardImages = [
 
                 { src: dino1, matched: false, cardBack: dinoCardCover },
@@ -95,7 +119,7 @@ const CardGame = () => {
 
             ]
             break;
-        case 'minecraft':
+        case 'Minecraft':
             cardImages = [
                 { src: colorful, matched: false, cardBack: minecraftCover },
                 { src: creeper, matched: false, cardBack: minecraftCover },
@@ -111,7 +135,7 @@ const CardGame = () => {
                 { src: villager, matched: false, cardBack: minecraftCover }
             ]
             break;
-        case 'alphabet':
+        case 'Alphabet':
             cardImages = [
                 { src: a, matched: false, cardBack: alphabetCover },
                 { src: b, matched: false, cardBack: alphabetCover },
@@ -141,7 +165,7 @@ const CardGame = () => {
                 { src: z, matched: false, cardBack: alphabetCover }
             ]
             break;
-            case 'princesses':
+            case 'Princesses':
                 cardImages = [
                     { src: ariel, matched: false, cardBack: princessCover },
                     { src: aurora, matched: false, cardBack: princessCover },
@@ -155,7 +179,36 @@ const CardGame = () => {
                     { src: tiana, matched: false, cardBack: princessCover }
                 ]
                 break;
-            default:
+            
+            case 'Minions':
+                cardImages = [
+                    { src: djminion, matched: false, cardBack: minionCover },
+                    { src: jelli, matched: false, cardBack: minionCover },
+                    { src: number1, matched: false, cardBack: minionCover },
+                    { src: group, matched: false, cardBack: minionCover },
+                    { src: iluvgru, matched: false, cardBack: minionCover},
+                    { src: cupcake, matched: false, cardBack: minionCover },
+                    { src: party, matched: false, cardBack: minionCover },
+                    { src: laughing, matched: false, cardBack: minionCover },
+                    { src: nogood, matched: false, cardBack: minionCover },
+                    { src: worker, matched: false, cardBack: minionCover }
+                ]
+                break;
+                case 'Numbers':
+                    cardImages = [
+                        { src: one, matched: false, cardBack: coverNumber },
+                        { src: two, matched: false, cardBack: coverNumber },
+                        { src: three, matched: false, cardBack: coverNumber },
+                        { src: four, matched: false, cardBack: coverNumber },
+                        { src: five, matched: false, cardBack: coverNumber },
+                        { src: six, matched: false, cardBack: coverNumber },
+                        { src: seven, matched: false, cardBack: coverNumber },
+                        { src: eight, matched: false, cardBack: coverNumber },
+                        { src: nine, matched: false, cardBack: coverNumber },
+                        { src: ten, matched: false, cardBack: coverNumber }
+                    ]
+                    break;
+                default:
             break;
     }
 
@@ -176,6 +229,15 @@ const CardGame = () => {
         setChoiceTwo(null)
         setCards(shuffledCards)
         setTurns(0)
+
+        // if (card === 'alphabet') {
+        //     const shuffleAbcCards = [...cardImages, ...cardImages]
+        //     .sort(() => Math.random() - 0.5)
+        //     .map((card) => ({ ...card, id: Math.random() }))
+        //     .filter(...cardImages[10])
+        //     setCards(shuffleAbcCards)
+
+        // }
     }
     console.log(cards, turns)
 
