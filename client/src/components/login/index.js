@@ -49,13 +49,13 @@ const LoginForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} style={{ width: '260px' }} className='mx-auto'>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
-        <Form.Group>
+        <Form.Group >
           <Form.Label htmlFor='username'></Form.Label>
-          <Form.Control
+          <Form.Control 
             type='text'
             placeholder='Username'
             name='username'
@@ -67,7 +67,7 @@ const LoginForm = () => {
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor='password'></Form.Label>
-          <Form.Control
+          <Form.Control 
             type='password'
             placeholder='Your password'
             name='password'
@@ -80,7 +80,7 @@ const LoginForm = () => {
         <Button
           disabled={!(userFormData.username && userFormData.password)}
           type='submit'
-          variant='outline-success'
+          variant='success'
           className='mt-2'>
           Submit
         </Button>
