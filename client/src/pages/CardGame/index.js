@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import '../../App.css';
 import SingleCard from '../../components/Single Card';
+// import Records from '../Records'
+import { Button, Modal} from 'react-bootstrap'
+
 //dinosaurs
 import dinoCardCover from '../../images/dinosaurs/dino-card-cover.jpg'
 import dino1 from '../../images/dinosaurs/dino-1.jpg'
@@ -39,23 +42,23 @@ import f from '../../images/alphabet/f-card.jpg'
 import g from '../../images/alphabet/g-card.jpg'
 import h from '../../images/alphabet/h-card.jpg'
 import i from '../../images/alphabet/i-card.jpg'
-import j from '../../images/alphabet/j-card.jpg'
-import k from '../../images/alphabet/k-card.jpg'
-import l from '../../images/alphabet/l-card.jpg'
-import m from '../../images/alphabet/m-card.jpg'
-import n from '../../images/alphabet/n-card.jpg'
-import o from '../../images/alphabet/o-card.jpg'
-import p from '../../images/alphabet/p-card.jpg'
-import q from '../../images/alphabet/q-card.jpg'
-import r from '../../images/alphabet/r-card.jpg'
-import s from '../../images/alphabet/s-card.jpg'
-import t from '../../images/alphabet/t-card.jpg'
-import u from '../../images/alphabet/u-card.jpg'
-import v from '../../images/alphabet/v-card.jpg'
-import w from '../../images/alphabet/w-card.jpg'
-import x from '../../images/alphabet/x-card.jpg'
-import y from '../../images/alphabet/y-card.jpg'
-import z from '../../images/alphabet/z-card.jpg'
+// import j from '../../images/alphabet/j-card.jpg'
+// import k from '../../images/alphabet/k-card.jpg'
+// import l from '../../images/alphabet/l-card.jpg'
+// import m from '../../images/alphabet/m-card.jpg'
+// import n from '../../images/alphabet/n-card.jpg'
+// import o from '../../images/alphabet/o-card.jpg'
+// import p from '../../images/alphabet/p-card.jpg'
+// import q from '../../images/alphabet/q-card.jpg'
+// import r from '../../images/alphabet/r-card.jpg'
+// import s from '../../images/alphabet/s-card.jpg'
+// import t from '../../images/alphabet/t-card.jpg'
+// import u from '../../images/alphabet/u-card.jpg'
+// import v from '../../images/alphabet/v-card.jpg'
+// import w from '../../images/alphabet/w-card.jpg'
+// import x from '../../images/alphabet/x-card.jpg'
+// import y from '../../images/alphabet/y-card.jpg'
+// import z from '../../images/alphabet/z-card.jpg'
 
 //princesses
 import princessCover from '../../images/princesses/cover-princess.jpg'
@@ -146,23 +149,23 @@ const CardGame = () => {
                 { src: g, matched: false, cardBack: alphabetCover },
                 { src: h, matched: false, cardBack: alphabetCover },
                 { src: i, matched: false, cardBack: alphabetCover },
-                { src: j, matched: false, cardBack: alphabetCover },
-                { src: k, matched: false, cardBack: alphabetCover },
-                { src: l, matched: false, cardBack: alphabetCover },
-                { src: m, matched: false, cardBack: alphabetCover },
-                { src: n, matched: false, cardBack: alphabetCover },
-                { src: o, matched: false, cardBack: alphabetCover },
-                { src: p, matched: false, cardBack: alphabetCover },
-                { src: q, matched: false, cardBack: alphabetCover },
-                { src: r, matched: false, cardBack: alphabetCover },
-                { src: s, matched: false, cardBack: alphabetCover },
-                { src: t, matched: false, cardBack: alphabetCover },
-                { src: u, matched: false, cardBack: alphabetCover },
-                { src: v, matched: false, cardBack: alphabetCover },
-                { src: w, matched: false, cardBack: alphabetCover },
-                { src: x, matched: false, cardBack: alphabetCover },
-                { src: y, matched: false, cardBack: alphabetCover },
-                { src: z, matched: false, cardBack: alphabetCover }
+                // { src: j, matched: false, cardBack: alphabetCover },
+                // { src: k, matched: false, cardBack: alphabetCover },
+                // { src: l, matched: false, cardBack: alphabetCover },
+                // { src: m, matched: false, cardBack: alphabetCover },
+                // { src: n, matched: false, cardBack: alphabetCover },
+                // { src: o, matched: false, cardBack: alphabetCover },
+                // { src: p, matched: false, cardBack: alphabetCover },
+                // { src: q, matched: false, cardBack: alphabetCover },
+                // { src: r, matched: false, cardBack: alphabetCover },
+                // { src: s, matched: false, cardBack: alphabetCover },
+                // { src: t, matched: false, cardBack: alphabetCover },
+                // { src: u, matched: false, cardBack: alphabetCover },
+                // { src: v, matched: false, cardBack: alphabetCover },
+                // { src: w, matched: false, cardBack: alphabetCover },
+                // { src: x, matched: false, cardBack: alphabetCover },
+                // { src: y, matched: false, cardBack: alphabetCover },
+                // { src: z, matched: false, cardBack: alphabetCover }
             ]
             break;
         case 'Princesses':
@@ -218,7 +221,18 @@ const CardGame = () => {
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [win, setWin] = useState(false);
+
+    const [showModal, setShowModal] = useState(false);
+    const [bestTurns, setBestTurns] = useState(
+        JSON.parse(localStorage.getItem("bestTurns")) || Number.POSITIVE_INFINITY
+    );
+
+    const handleClose = () => {
+        setShowModal(false)
+        shuffleCards()
+    }
+    
+    const handleShow = () => setShowModal(true);
 
     //shuffle cards
     const shuffleCards = () => {
@@ -226,21 +240,31 @@ const CardGame = () => {
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random() }))
 
+            // if (card === 'Alphabet') {
+            //     const alphCards = [...cardImages, ...cardImages]
+            //     .sort(() => Math.random() - 0.5)
+            //     .map((card) => ({ ...card, id: Math.random() }))
+            //    const doubleCards = [alphCards.length = 9]
+            //     setCards(doubleCards)
+            // }
+         
+
         setChoiceOne(null)
         setChoiceTwo(null)
         setCards(shuffledCards)
         setTurns(0)
-
-        // if (card === 'alphabet') {
-        //     const shuffleAbcCards = [...cardImages, ...cardImages]
-        //     .sort(() => Math.random() - 0.5)
-        //     .map((card) => ({ ...card, id: Math.random() }))
-        //     .filter(...cardImages[10])
-        //     setCards(shuffleAbcCards)
-
-        // }
+    
     }
-    // console.log(cards, turns)
+
+    const toggleEndGame = () => {
+        const matchedData = (cards.filter(card => card.matched === false));
+        if (Object.keys(matchedData).length === 0) {
+            handleShow();
+            const highScore = Math.min(turns, bestTurns);
+            setBestTurns(highScore);
+            localStorage.setItem("bestTurns", highScore);
+       }
+    }
 
     // handle a choice 
     const handleChoice = (card) => {
@@ -270,34 +294,24 @@ const CardGame = () => {
             }
         }
     }, [choiceOne, choiceTwo])
-
-
-
-    //reset choices and increase turn
-    const resetTurn = () => {
-        setChoiceOne(null)
-        setChoiceTwo(null)
-        setTurns(prevTurns => prevTurns + 1)
-        setDisabled(false)
-    }
-
-    //start a new game automatically 
+    
     useEffect(() => {
-        shuffleCards()
-        console.log(cards)
-    }, [card])
-
-
-
-    //if all cards are matched then win--  get 10 points and option to play again/next level
-
-    const matchedData = (cards.filter(card => card.matched === false));
-         if (matchedData.length === 0) {
-            // setWin(true) -- this line is breaking it
+        toggleEndGame();
+    })
+      
+        //reset choices and increase turn
+        const resetTurn = () => {
+            setChoiceOne(null)
+            setChoiceTwo(null)
+            setTurns((turns) => turns + 1)
+            setDisabled(false)
+            setShowModal(false)
         }
-
-
-
+       //start a new game automatically 
+       useEffect(() => {
+        shuffleCards()
+        setShowModal(false)
+    }, [card] )
     //level 1- 6 cards/level 2- 10/level 3- 14 /add 10 sparks for each win
 
 
@@ -306,28 +320,55 @@ const CardGame = () => {
 
 
     return (
-        <div className="App">
-            <h1>{card}</h1>
-            <button onClick={shuffleCards}>New Game</button>
-            {turns === 45 ? (<h1>Game Over, play again?</h1>) : (
-                <div className="card-grid">
-                    {cards.map(card => (
-                        <SingleCard
-                            key={card.id}
-                            card={card}
-                            handleChoice={handleChoice}
-                            flipped={card === choiceOne || card === choiceTwo || card.matched}
-                            disabled={disabled}
-                        />
-                    ))}
-                </div>
-            )}
+      <div className="App">
+        <h1>{card}</h1>
+        <button onClick={shuffleCards}>New Game</button>
+        {turns === 45 ? (
+          <h1>Game Over, play again?</h1>
+        ) : (
+          <div className="card-grid">
+            {cards.map((card) => (
+              <SingleCard
+                key={card.id}
+                card={card}
+                handleChoice={handleChoice}
+                flipped={
+                  card === choiceOne || card === choiceTwo || card.matched
+                }
+                disabled={disabled}
+              />
+            ))}
+          </div>
+        )}
+        <p className="turns">Turns: {turns}</p>
+        {localStorage.getItem("bestTurns") && (
+            <div>
+              <span className="bold">Best Score:</span> {bestTurns}
+        </div>)}
+        {showModal ? (
+        <> 
+          {/* <Button variant="primary" onClick={handleShow}>
+            Launch demo modal
+          </Button> */}
 
-
-            <p className="turns">Turns: {turns}</p>
-
-        </div>
-    )
+          <Modal show={showModal} onHide={handleClose} animation={false}>
+            <Modal.Header closeButton>
+              <Modal.Title className='text-dark'>Hurray! you completed {card}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className='text-dark'>
+              You completed {card} in {turns} moves. Your best score is {bestTurns} moves
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={handleClose}>
+                Save Score
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        
+        </>
+        ) : null }
+      </div>
+    );
 }
 
 export default CardGame;
