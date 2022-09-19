@@ -174,13 +174,13 @@ const CardGame = () => {
                 { src: ariel, matched: false, cardBack: princessCover },
                 // { src: aurora, matched: false, cardBack: princessCover },
                 { src: belle, matched: false, cardBack: princessCover },
-                // { src: elsa, matched: false, cardBack: princessCover },
-                // { src: jasmine, matched: false, cardBack: princessCover },
-                // { src: merida, matched: false, cardBack: princessCover },
-                // { src: pocahontas, matched: false, cardBack: princessCover },
-                // { src: rapunzel, matched: false, cardBack: princessCover },
-                // { src: raya, matched: false, cardBack: princessCover },
-                // { src: tiana, matched: false, cardBack: princessCover }
+                { src: elsa, matched: false, cardBack: princessCover },
+                { src: jasmine, matched: false, cardBack: princessCover },
+                { src: merida, matched: false, cardBack: princessCover },
+                { src: pocahontas, matched: false, cardBack: princessCover },
+                { src: rapunzel, matched: false, cardBack: princessCover },
+                { src: raya, matched: false, cardBack: princessCover },
+                { src: tiana, matched: false, cardBack: princessCover }
             ]
             break;
 
@@ -262,6 +262,8 @@ const CardGame = () => {
     
     }
 
+     //if all cards are matched then win--  get 10 points and option to play again/next level
+     
     const toggleEndGame = () => {
         const matchedData = (cards.filter(card => card.matched === false));
         if (Object.keys(matchedData).length === 0) {
@@ -318,21 +320,6 @@ const CardGame = () => {
         shuffleCards()
         setShowModal(false)
     }, [card] )
-
-        shuffleCards()
-        console.log(cards)
-    }, [card])
-
-
-
-    //if all cards are matched then win--  get 10 points and option to play again/next level
-    const matchedData = (cards.filter(card => card.matched === false));
-    console.log(matchedData)
-
-    // if (matchedData.length === 0) {
-    //     console.log('array is empty')
-    // }
-
 
     //level 1- 6 cards/level 2- 10/level 3- 14 /add 10 sparks for each win
 
@@ -394,30 +381,6 @@ const CardGame = () => {
         ) : null }
       </div>
     );
-
-        <div className="App">
-            <h1>{card}</h1>
-            <button onClick={shuffleCards}>New Game</button>
-            {turns === 45 ? (<h1>Game Over, play again?</h1>) : matchedData.length === 0 ? (<Confetti />) : (
-
-                <div className="card-grid">
-                    {cards.map(card => (
-                        <SingleCard
-                            key={card.id}
-                            card={card}
-                            handleChoice={handleChoice}
-                            flipped={card === choiceOne || card === choiceTwo || card.matched}
-                            disabled={disabled}
-                        />
-                    ))}
-                </div>
-            )}
-
-
-            <p className="turns">Turns: {turns}</p>
-
-        </div>
-    )
 
 }
 
