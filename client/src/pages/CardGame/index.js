@@ -95,6 +95,7 @@ import six from '../../images/numbers/six.jpg'
 import seven from '../../images/numbers/seven.jpg'
 import eight from '../../images/numbers/eight.jpg'
 import nine from '../../images/numbers/nine.jpg'
+import Confetti from '../../components/Confetti';
 // import ten from '../../images/numbers/ten.jpg'
 
 
@@ -170,13 +171,13 @@ const CardGame = () => {
                 { src: ariel, matched: false, cardBack: princessCover },
                 // { src: aurora, matched: false, cardBack: princessCover },
                 { src: belle, matched: false, cardBack: princessCover },
-                { src: elsa, matched: false, cardBack: princessCover },
-                { src: jasmine, matched: false, cardBack: princessCover },
-                { src: merida, matched: false, cardBack: princessCover },
-                { src: pocahontas, matched: false, cardBack: princessCover },
-                { src: rapunzel, matched: false, cardBack: princessCover },
-                { src: raya, matched: false, cardBack: princessCover },
-                { src: tiana, matched: false, cardBack: princessCover }
+                // { src: elsa, matched: false, cardBack: princessCover },
+                // { src: jasmine, matched: false, cardBack: princessCover },
+                // { src: merida, matched: false, cardBack: princessCover },
+                // { src: pocahontas, matched: false, cardBack: princessCover },
+                // { src: rapunzel, matched: false, cardBack: princessCover },
+                // { src: raya, matched: false, cardBack: princessCover },
+                // { src: tiana, matched: false, cardBack: princessCover }
             ]
             break;
 
@@ -212,13 +213,18 @@ const CardGame = () => {
             break;
     }
 
+    // const chooseSome () => {
+    //     card.Alphabet =
+    //     cardImages[Math.floor(Math.random)]
+
+    // }
 
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
     const [disabled, setDisabled] = useState(false)
-    const [win, setWin] = useState(false);
+
 
     //shuffle cards
     const shuffleCards = () => {
@@ -290,11 +296,13 @@ const CardGame = () => {
 
 
     //if all cards are matched then win--  get 10 points and option to play again/next level
-
     const matchedData = (cards.filter(card => card.matched === false));
-         if (matchedData.length === 0) {
-            // setWin(true) -- this line is breaking it
-        }
+    console.log(matchedData)
+
+    // if (matchedData.length === 0) {
+    //     console.log('array is empty')
+    // }
+
 
 
 
@@ -303,13 +311,16 @@ const CardGame = () => {
 
 
     //if turns ===45 then game over ---- this is on line 312
+    // else win/confetti ---needs set timeout 
+    // score/record keeping with mutation 
 
 
     return (
         <div className="App">
             <h1>{card}</h1>
             <button onClick={shuffleCards}>New Game</button>
-            {turns === 45 ? (<h1>Game Over, play again?</h1>) : (
+            {turns === 45 ? (<h1>Game Over, play again?</h1>) : matchedData.length === 0 ? (<Confetti />) : (
+
                 <div className="card-grid">
                     {cards.map(card => (
                         <SingleCard
