@@ -4,6 +4,7 @@ import '../../App.css';
 import SingleCard from '../../components/Single Card';
 // import Records from '../Records'
 import { Button, Modal} from 'react-bootstrap'
+import  Confetti  from '../../components/Confetti'
 
 //dinosaurs
 import dinoCardCover from '../../images/dinosaurs/dino-card-cover.jpg'
@@ -98,7 +99,7 @@ import six from '../../images/numbers/six.jpg'
 import seven from '../../images/numbers/seven.jpg'
 import eight from '../../images/numbers/eight.jpg'
 import nine from '../../images/numbers/nine.jpg'
-import Confetti from '../../components/Confetti';
+
 // import ten from '../../images/numbers/ten.jpg'
 
 
@@ -127,16 +128,16 @@ const CardGame = () => {
             cardImages = [
                 { src: colorful, matched: false, cardBack: minecraftCover },
                 { src: creeper, matched: false, cardBack: minecraftCover },
-                { src: diamondArmor, matched: false, cardBack: minecraftCover },
+                // { src: diamondArmor, matched: false, cardBack: minecraftCover },
                 // { src: diamondOre, matched: false, cardBack: minecraftCover },
                 // { src: diamonds, matched: false, cardBack: minecraftCover },
-                { src: enderDragon, matched: false, cardBack: minecraftCover },
-                { src: hanginOut, matched: false, cardBack: minecraftCover },
-                { src: minecraftSword, matched: false, cardBack: minecraftCover },
+                // { src: enderDragon, matched: false, cardBack: minecraftCover },
+                // { src: hanginOut, matched: false, cardBack: minecraftCover },
+                // { src: minecraftSword, matched: false, cardBack: minecraftCover },
                 // { src: pandas, matched: false, cardBack: minecraftCover },
-                { src: portal, matched: false, cardBack: minecraftCover },
-                { src: steve, matched: false, cardBack: minecraftCover },
-                { src: villager, matched: false, cardBack: minecraftCover }
+                // { src: portal, matched: false, cardBack: minecraftCover },
+                // { src: steve, matched: false, cardBack: minecraftCover },
+                // { src: villager, matched: false, cardBack: minecraftCover }
             ]
             break;
         case 'Alphabet':
@@ -263,9 +264,8 @@ const CardGame = () => {
     }
 
      //if all cards are matched then win--  get 10 points and option to play again/next level
-     
+     const matchedData = (cards.filter(card => card.matched === false));
     const toggleEndGame = () => {
-        const matchedData = (cards.filter(card => card.matched === false));
         if (Object.keys(matchedData).length === 0) {
             handleShow();
             const highScore = Math.min(turns, bestTurns);
@@ -335,9 +335,7 @@ const CardGame = () => {
       <div className="App">
         <h1>{card}</h1>
         <button onClick={shuffleCards}>New Game</button>
-        {turns === 45 ? (
-          <h1>Game Over, play again?</h1>
-        ) : (
+        {turns === 45 ? ( <h1>Game Over, play again?</h1>) : matchedData.length === 0 ? (<Confetti />) : (
           <div className="card-grid">
             {cards.map((card) => (
               <SingleCard
@@ -359,10 +357,6 @@ const CardGame = () => {
         </div>)}
         {showModal ? (
         <> 
-          {/* <Button variant="primary" onClick={handleShow}>
-            Launch demo modal
-          </Button> */}
-
           <Modal show={showModal} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
               <Modal.Title className='text-dark'>Hurray! you completed {card}</Modal.Title>
