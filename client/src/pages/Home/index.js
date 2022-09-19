@@ -12,7 +12,7 @@ const HomePage = () => {
     return (
       <div className='justify-content-center' >
         <video
-          autoPlay
+          autoPlay={true}
           loop
           src={loopedVid}
           style={{
