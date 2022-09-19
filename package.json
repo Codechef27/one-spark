@@ -19,8 +19,5 @@
     "homepage": "https://github.com/Codechef27/one-spark#readme",
     "devDependencies": {
         "concurrently": "^7.4.0"
-    },
-    "dependencies": {
-        "react-confetti": "^6.1.0"
     }
 }
