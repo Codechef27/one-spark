@@ -29,17 +29,19 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
 `;
 
 export const ADD_RECORD = gql`
-  mutation addRecord($record: turnsInput) {
-    addRecord(record: $record) {
-      username
-      email
-      records {
-        _id
-        turns
-        recordDate
-      }
+mutation addRecord($recordData: turnsInput) {
+  addRecord(recordData: $recordData) {
+    _id
+    username
+    email
+    records {
+      _id
+      gameTitle
+      points
+      recordDate
     }
   }
+}
 `;
 
 export const DELETE_RECORD = gql`

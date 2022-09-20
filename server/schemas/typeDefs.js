@@ -10,7 +10,8 @@ const typeDefs = gql`
 
   type Record {
     _id: ID
-    turns: Int
+    gameTitle: String
+    points: Int
     recordDate: String
   }
 
@@ -23,19 +24,20 @@ const typeDefs = gql`
     user: User
     profile: User
     records: [Record]
-  
+  users:[User]
 
   }
 
   input turnsInput {
-    turns: Int
+    points: Int
+    gameTitle: String
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     login(username: String!, password: String!): Auth
-    addRecord(record: turnsInput): User
+    addRecord(recordData: turnsInput): User
     deleteRecord(record: ID!): User
   }
 

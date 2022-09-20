@@ -9,6 +9,7 @@ import { ADD_RECORD } from '../../utils/mutations';
 import auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { saveRecord, getRecord} from '../../utils/localStorage';
+import {shuffle} from '../../utils/functions'
 
 //dinosaurs
 import dinoCardCover from '../../images/dinosaurs/dino-card-cover.jpg'
@@ -47,23 +48,23 @@ import f from '../../images/alphabet/f-card.jpg'
 import g from '../../images/alphabet/g-card.jpg'
 import h from '../../images/alphabet/h-card.jpg'
 import i from '../../images/alphabet/i-card.jpg'
-// import j from '../../images/alphabet/j-card.jpg'
-// import k from '../../images/alphabet/k-card.jpg'
-// import l from '../../images/alphabet/l-card.jpg'
-// import m from '../../images/alphabet/m-card.jpg'
-// import n from '../../images/alphabet/n-card.jpg'
-// import o from '../../images/alphabet/o-card.jpg'
-// import p from '../../images/alphabet/p-card.jpg'
-// import q from '../../images/alphabet/q-card.jpg'
-// import r from '../../images/alphabet/r-card.jpg'
-// import s from '../../images/alphabet/s-card.jpg'
-// import t from '../../images/alphabet/t-card.jpg'
-// import u from '../../images/alphabet/u-card.jpg'
-// import v from '../../images/alphabet/v-card.jpg'
-// import w from '../../images/alphabet/w-card.jpg'
-// import x from '../../images/alphabet/x-card.jpg'
-// import y from '../../images/alphabet/y-card.jpg'
-// import z from '../../images/alphabet/z-card.jpg'
+import j from '../../images/alphabet/j-card.jpg'
+import k from '../../images/alphabet/k-card.jpg'
+import l from '../../images/alphabet/l-card.jpg'
+import m from '../../images/alphabet/m-card.jpg'
+import n from '../../images/alphabet/n-card.jpg'
+import o from '../../images/alphabet/o-card.jpg'
+import p from '../../images/alphabet/p-card.jpg'
+import q from '../../images/alphabet/q-card.jpg'
+import r from '../../images/alphabet/r-card.jpg'
+import s from '../../images/alphabet/s-card.jpg'
+import t from '../../images/alphabet/t-card.jpg'
+import u from '../../images/alphabet/u-card.jpg'
+import v from '../../images/alphabet/v-card.jpg'
+import w from '../../images/alphabet/w-card.jpg'
+import x from '../../images/alphabet/x-card.jpg'
+import y from '../../images/alphabet/y-card.jpg'
+import z from '../../images/alphabet/z-card.jpg'
 
 //princesses
 import princessCover from '../../images/princesses/cover-princess.jpg'
@@ -156,24 +157,28 @@ import nine from '../../images/numbers/nine.jpg'
                 { src: g, matched: false, cardBack: alphabetCover },
                 { src: h, matched: false, cardBack: alphabetCover },
                 { src: i, matched: false, cardBack: alphabetCover },
-                // { src: j, matched: false, cardBack: alphabetCover },
-                // { src: k, matched: false, cardBack: alphabetCover },
-                // { src: l, matched: false, cardBack: alphabetCover },
-                // { src: m, matched: false, cardBack: alphabetCover },
-                // { src: n, matched: false, cardBack: alphabetCover },
-                // { src: o, matched: false, cardBack: alphabetCover },
-                // { src: p, matched: false, cardBack: alphabetCover },
-                // { src: q, matched: false, cardBack: alphabetCover },
-                // { src: r, matched: false, cardBack: alphabetCover },
-                // { src: s, matched: false, cardBack: alphabetCover },
-                // { src: t, matched: false, cardBack: alphabetCover },
-                // { src: u, matched: false, cardBack: alphabetCover },
-                // { src: v, matched: false, cardBack: alphabetCover },
-                // { src: w, matched: false, cardBack: alphabetCover },
-                // { src: x, matched: false, cardBack: alphabetCover },
-                // { src: y, matched: false, cardBack: alphabetCover },
-                // { src: z, matched: false, cardBack: alphabetCover }
+                { src: j, matched: false, cardBack: alphabetCover },
+                { src: k, matched: false, cardBack: alphabetCover },
+                { src: l, matched: false, cardBack: alphabetCover },
+                { src: m, matched: false, cardBack: alphabetCover },
+                { src: n, matched: false, cardBack: alphabetCover },
+                { src: o, matched: false, cardBack: alphabetCover },
+                { src: p, matched: false, cardBack: alphabetCover },
+                { src: q, matched: false, cardBack: alphabetCover },
+                { src: r, matched: false, cardBack: alphabetCover },
+                { src: s, matched: false, cardBack: alphabetCover },
+                { src: t, matched: false, cardBack: alphabetCover },
+                { src: u, matched: false, cardBack: alphabetCover },
+                { src: v, matched: false, cardBack: alphabetCover },
+                { src: w, matched: false, cardBack: alphabetCover },
+                { src: x, matched: false, cardBack: alphabetCover },
+                { src: y, matched: false, cardBack: alphabetCover },
+                { src: z, matched: false, cardBack: alphabetCover }
             ]
+
+            shuffle(cardImages)
+
+            cardImages.length = 9
             break;
         case 'Princesses':
             cardImages = [
@@ -253,6 +258,7 @@ import nine from '../../images/numbers/nine.jpg'
         return () => saveRecord(savedRecord);
     });
 
+    
     //shuffle cards
     const shuffleCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
@@ -277,23 +283,25 @@ import nine from '../../images/numbers/nine.jpg'
     };
 
     const handleRecordSave = async () => {   
-        const recordToSave = turns;
+        const recordToSave = {gameTitle: card,
+        points: turns};
         const token = auth.loggedIn() ? auth.getToken() : null; 
         if (!token) {
             return false;
         }
+
         try {
             await addRecord({
-                variables: {turns: { ...recordToSave  } }
+                variables: {recordData: recordToSave }
             })
          
-            let testRecordArr = [...savedRecord, recordToSave];
-            console.log(testRecordArr);
+            // let testRecordArr = [...savedRecord, recordToSave];
+            // console.log(testRecordArr);
 
-            setSavedRecord(testRecordArr);
+            // setSavedRecord(testRecordArr);
             
-            let newHighScore = Math.min(...testRecordArr);
-            setHighScore(newHighScore)
+            // let newHighScore = Math.min(...testRecordArr);
+            // setHighScore(newHighScore)
 
         } catch (err) {
             console.error(err);
