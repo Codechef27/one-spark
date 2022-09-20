@@ -1,30 +1,28 @@
-export const getRecordIds = () => {
-    const savedRecordIds = localStorage.getItem('saved_records')
+export const getRecord = () => {
+    const savedRecord = localStorage.getItem('saved_records')
       ? JSON.parse(localStorage.getItem('saved_records'))
       : [];
   
-    return savedRecordIds;
+    return savedRecord;
   };
   
-  export const saveRecordIds = (recordIdArr) => {
-    if (recordIdArr.length) {
-      localStorage.setItem('saved_records', JSON.stringify(recordIdArr));
-    } else {
-      localStorage.removeItem('saved_records');
-    }
+  export const saveRecord = (recordArr) => {
+    if (recordArr.length) {
+      localStorage.setItem('saved_records', JSON.stringify(recordArr));
+    } 
   };
   
-  export const removeRecordId = (recordId) => {
-    const savedRecordIds = localStorage.getItem('saved_records')
+  export const removeRecord = (record) => {
+    const savedRecord = localStorage.getItem('saved_records')
       ? JSON.parse(localStorage.getItem('saved_records'))
       : null;
   
-    if (!savedRecordIds) {
+    if (!savedRecord) {
       return false;
     }
   
-    const updatedSavedRecordIds = savedRecordIds?.filter((savedRecordId) => savedRecordId !== recordId);
-    localStorage.setItem('saved_records', JSON.stringify(updatedSavedRecordIds));
+    const updatedSavedRecord = savedRecord?.filter((savedRecord) => savedRecord !== record);
+    localStorage.setItem('saved_records', JSON.stringify(updatedSavedRecord));
   
     return true;
   };
