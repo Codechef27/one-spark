@@ -418,8 +418,8 @@ import venus from '../../images/planets/venus.jpg'
         </div>) : null }
         {showModal ? (
         <> 
-        <Confetti />
-          <Modal show={showModal} onHide={handleClose} animation={false}>
+          <Modal show={showModal} onHide={handleClose}  aria-labelledby="contained-modal-title-vcenter" centered={true}
+          backdrop={false}>
            
             <Modal.Header closeButton>
               <Modal.Title className='text-dark'>Hurray! you completed {card}</Modal.Title>
@@ -433,6 +433,7 @@ import venus from '../../images/planets/venus.jpg'
               </Button>
             </Modal.Footer>
           </Modal>
+          <Confetti />
         
         </>
         ) : null }
