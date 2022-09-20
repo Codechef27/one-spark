@@ -93,7 +93,6 @@ import number1 from '../../images/minions/number1-dad.jpg'
 import worker from '../../images/minions/worker-minions.jpg'
 
 //numbers
-
 import coverNumber from '../../images/numbers/colorful-number-cover.jpg'
 import one from '../../images/numbers/one.jpg'
 import two from '../../images/numbers/two.jpg'
@@ -104,9 +103,21 @@ import six from '../../images/numbers/six.jpg'
 import seven from '../../images/numbers/seven.jpg'
 import eight from '../../images/numbers/eight.jpg'
 import nine from '../../images/numbers/nine.jpg'
-
-
 // import ten from '../../images/numbers/ten.jpg'
+
+//planets
+import planetCover from '../../images/planets/planets-cover.jpg'
+import earth from '../../images/planets/earth.jpg'
+import jupiter from '../../images/planets/jupiter.jpg'
+import mars from '../../images/planets/mars.jpg'
+import mercury from '../../images/planets/mercury.jpg'
+import neptune from '../../images/planets/neptune.jpg'
+import saturn from '../../images/planets/saturn.jpg'
+import sun from '../../images/planets/sun.jpg'
+import uranus from '../../images/planets/uranus.jpg'
+import venus from '../../images/planets/venus.jpg'
+
+
 
 
 
@@ -128,6 +139,20 @@ import nine from '../../images/numbers/nine.jpg'
                 { src: dino9, matched: false, cardBack: dinoCardCover },
                 // { src: dino10, matched: false, cardBack: dinoCardCover }
 
+            ]
+            break;
+            case 'Planets':
+            cardImages = [
+
+                { src: earth, matched: false, cardBack: planetCover },
+                { src: jupiter, matched: false, cardBack: planetCover },
+                { src: mars, matched: false, cardBack: planetCover },
+                { src: mercury, matched: false, cardBack: planetCover },
+                { src: neptune, matched: false, cardBack: planetCover },
+                { src: saturn, matched: false, cardBack: planetCover },
+                { src: sun, matched: false, cardBack: planetCover },
+                { src: uranus, matched: false, cardBack: planetCover },
+                { src: venus, matched: false, cardBack: planetCover }
             ]
             break;
         case 'Minecraft':

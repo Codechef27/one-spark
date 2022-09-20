@@ -26,6 +26,7 @@ import auth from '../../utils/auth';
                      <NavDropdown title="Educational">
                        <NavDropdown.Item as={Link} to="game/Alphabet">ABC'S</NavDropdown.Item>
                        <NavDropdown.Item as={Link} to="game/Numbers">Numbers</NavDropdown.Item>
+                       <NavDropdown.Item as={Link} to="game/Planets">Planets</NavDropdown.Item>
                      </NavDropdown>
                    </Nav>
                  </Navbar.Collapse>
