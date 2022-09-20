@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const recordSchema = new Schema({
-  turns: {
+  gameTitle:{
+    type: String
+  },
+  points: {
     type: Number,
     required: true,
   },
@@ -14,6 +17,6 @@ const recordSchema = new Schema({
   },
 });
 
-const Record = mongoose.model("Record", recordSchema);
 
-module.exports = Record;
+
+module.exports = recordSchema;
