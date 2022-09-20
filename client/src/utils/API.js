@@ -29,22 +29,20 @@ export const loginUser = (userData) => {
   });
 };
 
-export const saveRecord = (recordData, token) => {
+export const addRecord = (recordData) => {
   return fetch("/api/users", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(recordData),
   });
 };
 
-export const deleteRecord = (recordId, token) => {
+export const deleteRecord = (recordId) => {
     return fetch(`/api/users/records/${recordId}`, {
       method: "DELETE",
       headers: {
-        authorization: `Bearer ${token}`,
       },
     });
   };

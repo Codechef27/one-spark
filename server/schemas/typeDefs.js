@@ -8,16 +8,10 @@ const typeDefs = gql`
     records: [Record]
   }
 
-  type Game {
-    _id: ID
-    name: String
-  }
-
   type Record {
-    score: Int
-    recordId: ID
+    _id: ID
+    turns: Int
     recordDate: String
-    game: [Game]
   }
 
   type Auth {
@@ -26,20 +20,23 @@ const typeDefs = gql`
  }
 
   type Query {
-    game: [Game]
     user: User
     profile: User
-    record: [Record]
+    records: [Record]
   
 
+  }
+
+  input turnsInput {
+    turns: Int
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     login(username: String!, password: String!): Auth
-    addRecord(game: ID!): User
-    deleteRecord(recordId: ID!): User
+    addRecord(record: turnsInput): User
+    deleteRecord(record: ID!): User
   }
 
 `; 

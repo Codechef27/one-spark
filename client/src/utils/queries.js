@@ -9,8 +9,8 @@ export const QUERY_USER = gql`
         email
         records {
             _id
-           recordDate
-           game {} 
+            turns
+            recordDate 
         }
     }
 }`

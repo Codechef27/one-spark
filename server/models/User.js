@@ -21,7 +21,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 4
   },
-  record: [Record.schema]
+  records: [Record.schema]
 });
 
 // set up pre-save middleware to create password

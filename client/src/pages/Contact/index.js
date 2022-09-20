@@ -11,7 +11,7 @@ const ContactGameDevs = () => {
   return (
     <>
       <p variant="primary" onClick={handleShow}>
-        Send A Message 
+        Message Us 
       </p>
 
       <Modal show={show} onHide={handleClose}>
