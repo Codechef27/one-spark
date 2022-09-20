@@ -5,6 +5,10 @@ import SingleCard from '../../components/Single Card';
 // import Records from '../Records'
 import { Button, Modal} from 'react-bootstrap'
 import  Confetti  from '../../components/Confetti'
+import { ADD_RECORD } from '../../utils/mutations';
+import auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+import { saveRecord, getRecord} from '../../utils/localStorage';
 
 //dinosaurs
 import dinoCardCover from '../../images/dinosaurs/dino-card-cover.jpg'
@@ -100,11 +104,12 @@ import seven from '../../images/numbers/seven.jpg'
 import eight from '../../images/numbers/eight.jpg'
 import nine from '../../images/numbers/nine.jpg'
 
+
 // import ten from '../../images/numbers/ten.jpg'
 
 
 
-const CardGame = () => {
+ const CardGame = () => {
     const { card } = useParams();
     let cardImages;
     switch (card) {
@@ -223,23 +228,30 @@ const CardGame = () => {
 
     // }
 
-    const [cards, setCards] = useState([])
-    const [turns, setTurns] = useState(0)
-    const [choiceOne, setChoiceOne] = useState(null)
-    const [choiceTwo, setChoiceTwo] = useState(null)
-    const [disabled, setDisabled] = useState(false)
+
+
+    const [cards, setCards] = useState([]);
+    const [turns, setTurns] = useState(0);
+    const [choiceOne, setChoiceOne] = useState(null);
+    const [choiceTwo, setChoiceTwo] = useState(null);
+    const [disabled, setDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [bestTurns, setBestTurns] = useState(
-        JSON.parse(localStorage.getItem("bestTurns")) || Number.POSITIVE_INFINITY
-    );
+    const [savedRecord, setSavedRecord] = useState(getRecord());
+    const [addRecord] = useMutation(ADD_RECORD);
+    const [highScore, setHighScore ] = useState(Math.min(...getRecord()));
 
     const handleClose = () => {
         setShowModal(false)
         shuffleCards()
-    }
+    };
     
-    const handleShow = () => setShowModal(true);
+    const handleShow = () => {
+        setShowModal(true);
+    };
 
+    useEffect(() => {
+        return () => saveRecord(savedRecord);
+    });
 
     //shuffle cards
     const shuffleCards = () => {
@@ -247,38 +259,54 @@ const CardGame = () => {
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random() }))
 
-            // if (card === 'Alphabet') {
-            //     const alphCards = [...cardImages, ...cardImages]
-            //     .sort(() => Math.random() - 0.5)
-            //     .map((card) => ({ ...card, id: Math.random() }))
-            //    const doubleCards = [alphCards.length = 9]
-            //     setCards(doubleCards)
-            // }
-         
-
         setChoiceOne(null)
         setChoiceTwo(null)
         setCards(shuffledCards)
         setTurns(0)
     
-    }
+    };
 
      //if all cards are matched then win--  get 10 points and option to play again/next level
-     const matchedData = (cards.filter(card => card.matched === false));
-    const toggleEndGame = () => {
-        if (Object.keys(matchedData).length === 0) {
-            handleShow();
-            const highScore = Math.min(turns, bestTurns);
-            setBestTurns(highScore);
-            localStorage.setItem("bestTurns", highScore);
-       }
-    }
+    const matchedData = (cards.filter(card => card.matched === false));
+
+    const toggleEndGame = async () => {
+
+      if (Object.keys(matchedData).length === 0) {
+        handleShow();
+      }
+    };
+
+    const handleRecordSave = async () => {   
+        const recordToSave = turns;
+        const token = auth.loggedIn() ? auth.getToken() : null; 
+        if (!token) {
+            return false;
+        }
+        try {
+            await addRecord({
+                variables: {turns: { ...recordToSave  } }
+            })
+         
+            let testRecordArr = [...savedRecord, recordToSave];
+            console.log(testRecordArr);
+
+            setSavedRecord(testRecordArr);
+            
+            let newHighScore = Math.min(...testRecordArr);
+            setHighScore(newHighScore)
+
+        } catch (err) {
+            console.error(err);
+        } 
+    };
+
+
 
     // handle a choice 
     const handleChoice = (card) => {
         console.log(card)
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-    }
+    };
 
     //compare 2 selected cards
     useEffect(() => {
@@ -304,7 +332,7 @@ const CardGame = () => {
     }, [choiceOne, choiceTwo])
     
     useEffect(() => {
-        toggleEndGame();
+        toggleEndGame()   
     })
       
         //reset choices and increase turn
@@ -335,7 +363,7 @@ const CardGame = () => {
       <div className="App">
         <h1>{card}</h1>
         <button onClick={shuffleCards}>New Game</button>
-        {turns === 45 ? ( <h1>Game Over, play again?</h1>) : matchedData.length === 0 ? (<Confetti />) : (
+        {turns === 45 ?  <h1>Game Over, play again?</h1> :( 
           <div className="card-grid">
             {cards.map((card) => (
               <SingleCard
@@ -351,21 +379,23 @@ const CardGame = () => {
           </div>
         )}
         <p className="turns">Turns: {turns}</p>
-        {localStorage.getItem("bestTurns") && (
+        {getRecord().length > 0 ? (
             <div>
-              <span className="bold">Best Score:</span> {bestTurns}
-        </div>)}
+              <span className="bold">Best Score:</span> {highScore} 
+        </div>) : null }
         {showModal ? (
         <> 
+        <Confetti />
           <Modal show={showModal} onHide={handleClose} animation={false}>
+           
             <Modal.Header closeButton>
               <Modal.Title className='text-dark'>Hurray! you completed {card}</Modal.Title>
             </Modal.Header>
             <Modal.Body className='text-dark'>
-              You completed {card} in {turns} moves. Your best score is {bestTurns} moves
+              You completed {card} in {turns} moves. 
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" onClick={handleClose}>
+              <Button variant="primary" onClick={() => {handleRecordSave() && handleClose() }} >
                 Save Score
               </Button>
             </Modal.Footer>
