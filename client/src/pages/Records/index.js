@@ -1,26 +1,30 @@
-import React from "react";
 import {Tab, Tabs, Table } from 'react-bootstrap'
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_USERS } from "../../utils/queries";
+import { useEffect } from 'react';
 
 
 const Records = () => {
   const { data } = useQuery(QUERY_USER, QUERY_USERS);
-//   const { allUsersData } = useQuery(QUERY_USERS);
 
-//   let user;
-//   let allUsers;
 
-//   if (userData) {
-//     user = userData.user
-//   }
 
-//   if (allUsersData) {
-//     allUsers = allUsersData.allUsers
-//   }
-
-  const user = data?.user || [];
+  const user = data?.user || {};
   const allUsers = data?.users || [];
+
+  //filter each game for lowest score 
+
+
+    // const mcraft= user.records?.filter((item) => item.gameTitle === 'Minecraft')
+    // const uniqueMcraft = mcraft.filter((c,index)=> {
+    //   return mcraft.indexOf(c) === index.gameTitle
+    // })
+    // uniqueMcraft.sort((a, b)=>{
+    //   return a.points - b.points
+    // })
+    
+    // console.log(uniqueMcraft)
+  
 
 //   const renderUserData = (data,_id) => {
 //     return (
@@ -58,8 +62,14 @@ const Records = () => {
               <th>Best Moves</th>
             </tr>
           </thead>
-          <tbody>
-          {/* {user.map(renderUserData)} */}
+          <tbody> 
+          {user.records?.map(({id, gameTitle, points})=>(
+            <tr key={id}>
+                  <td>{id}</td>
+                    <td>{gameTitle}</td>
+                    <td>{points}</td>
+                  </tr>
+          ))}
           </tbody>
    
           
@@ -78,7 +88,7 @@ const Records = () => {
           </thead>
           <tbody>
             <tr>
-            {/* {allUsers.map(renderAllUsersData)} */}
+            {/* {{allUsers.map(renderAllUsersData)} */}
             </tr>
           </tbody>
         </Table>
