@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 
 const Records = () => {
-  const { data } = useQuery(QUERY_USER, QUERY_USERS);
+  const { data, error } = useQuery(QUERY_USER, QUERY_USERS);
 
 
 
@@ -15,13 +15,13 @@ const Records = () => {
 
 console.log(allUsers)
   //filter each game for lowest score 
-
-    const mcraft = user.records?.filter((item) => item.gameTitle === 'Minecraft')
+try{
+  const mcraft = user.records?.filter((item) => item.gameTitle === 'Minecraft')
     const princesses = user.records?.filter((item) => item.gameTitle === 'Princesses')
 
     const mpoints = []
     const ppoints = []
-    const uniqueMcraft = mcraft?.filter(element => {
+    const uniqueMcraft = mcraft && mcraft?.filter(element => {
       const duplicate = mpoints.includes(element.points);
       if (!duplicate) {
         mpoints.push(element.points)
@@ -29,7 +29,7 @@ console.log(allUsers)
       }
       return false
     })
-    const uniquePrincesses = princesses?.filter(element => {
+    const uniquePrincesses = princesses && princesses?.filter(element => {
       const duplicate = ppoints.includes(element.points);
       if (!duplicate) {
         ppoints.push(element.points)
@@ -46,6 +46,10 @@ console.log(allUsers)
     })
 
     personalBest.push(uniqueMcraft[0], uniquePrincesses[0])
+}catch(err){
+  console.log(err)
+}
+    
   
 
 
@@ -100,9 +104,9 @@ console.log(allUsers)
             </tr>
           </thead>
           <tbody>
-            {personalBest?.map(({ id, gameTitle, points }) => (
-              <tr key={id}>
-                <td>{id}</td>
+            {personalBest?.map(({  gameTitle, points }, i) => (
+              <tr key={i}>
+                <td>{i}</td>
                 <td>{gameTitle}</td>
                 <td>{points}</td>
               </tr>
