@@ -1,10 +1,11 @@
 # One-Spark
+  ![Screen Shot 2022-09-21 at 6 46 01 PM](https://user-images.githubusercontent.com/102267278/191623570-a62ea030-f16e-408a-a85d-487e316edc1e.png)
 
-  ![license badge](https://img.shields.io/static/v1?label=license&message=-MIT&color=red)
   
   ## Description
 
   This application is a match game that improves memory skills through fun and practice with memorization. Once you log in, you can access games from a virety of categories to play at your leisure. 
+
 
   [Video Walkthrough](https://drive.google.com/file/d/1aqLmI6NK5fTcTsWuzH7Ik6c5BD6a5jl8/view)
 
