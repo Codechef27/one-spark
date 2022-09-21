@@ -108,8 +108,6 @@ console.log(allUsers)
               </tr>
             ))}
           </tbody>
-
-
         </Table>
 
       </Tab>
