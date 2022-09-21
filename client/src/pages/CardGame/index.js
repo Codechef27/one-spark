@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import '../../App.css';
 import SingleCard from '../../components/Single Card';
-// import Records from '../Records'
 import { Button, Modal} from 'react-bootstrap'
 import  Confetti  from '../../components/Confetti'
 import { ADD_RECORD } from '../../utils/mutations';
 import auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
-import { saveRecord, getRecord} from '../../utils/localStorage';
 import {shuffle} from '../../utils/functions'
 
 //dinosaurs
@@ -22,18 +20,14 @@ import dino6 from '../../images/dinosaurs/dino-6.jpg'
 import dino7 from '../../images/dinosaurs/dino-7.jpg'
 import dino8 from '../../images/dinosaurs/dino-8.jpg'
 import dino9 from '../../images/dinosaurs/dino-9.jpg'
-// import dino10 from '../../images/dinosaurs/dino-10.jpg'
 //minecraft
 import minecraftCover from '../../images/minecraft/minecraft-cover.jpg'
 import colorful from '../../images/minecraft/colorful.jpg'
 import creeper from '../../images/minecraft/creeper.jpg'
 import diamondArmor from '../../images/minecraft/diamond-armor.jpg'
-// import diamondOre from '../../images/minecraft/diamond-ore.jpg'
-// import diamonds from '../../images/minecraft/diamonds.jpg'
 import enderDragon from '../../images/minecraft/ender-dragon.jpg'
 import hanginOut from '../../images/minecraft/hangin-out.jpg'
 import minecraftSword from '../../images/minecraft/minecraft-sword.jpg'
-// import pandas from '../../images/minecraft/pandas.jpg'
 import portal from '../../images/minecraft/portal.jpg'
 import steve from '../../images/minecraft/Steve-Sitting-Down.jpg'
 import villager from '../../images/minecraft/villager.jpg'
@@ -69,7 +63,6 @@ import z from '../../images/alphabet/z-card.jpg'
 //princesses
 import princessCover from '../../images/princesses/cover-princess.jpg'
 import ariel from '../../images/princesses/Ariel.jpg'
-// import aurora from '../../images/princesses/Aurora.jpg'
 import belle from '../../images/princesses/Belle.jpg'
 import elsa from '../../images/princesses/elsa.jpg'
 import jasmine from '../../images/princesses/Jasmine.jpg'
@@ -80,7 +73,6 @@ import raya from '../../images/princesses/Raya.jpg'
 import tiana from '../../images/princesses/tiana.jpg'
 
 //minions
-// import djminion from '../../images/minions/dj-minions.jpg'
 import jelli from '../../images/minions/jelli-taste.jpg'
 import cupcake from '../../images/minions/minion-cupcake.jpg'
 import iluvgru from '../../images/minions/minion-ilovegruhat.jpg'
@@ -103,7 +95,6 @@ import six from '../../images/numbers/six.jpg'
 import seven from '../../images/numbers/seven.jpg'
 import eight from '../../images/numbers/eight.jpg'
 import nine from '../../images/numbers/nine.jpg'
-// import ten from '../../images/numbers/ten.jpg'
 
 //planets
 import planetCover from '../../images/planets/planets-cover.jpg'
@@ -137,7 +128,6 @@ import venus from '../../images/planets/venus.jpg'
                 { src: dino7, matched: false, cardBack: dinoCardCover },
                 { src: dino8, matched: false, cardBack: dinoCardCover },
                 { src: dino9, matched: false, cardBack: dinoCardCover },
-                // { src: dino10, matched: false, cardBack: dinoCardCover }
 
             ]
             break;
@@ -159,16 +149,13 @@ import venus from '../../images/planets/venus.jpg'
             cardImages = [
                 { src: colorful, matched: false, cardBack: minecraftCover },
                 { src: creeper, matched: false, cardBack: minecraftCover },
-                // { src: diamondArmor, matched: false, cardBack: minecraftCover },
-                // { src: diamondOre, matched: false, cardBack: minecraftCover },
-                // { src: diamonds, matched: false, cardBack: minecraftCover },
-                // { src: enderDragon, matched: false, cardBack: minecraftCover },
-                // { src: hanginOut, matched: false, cardBack: minecraftCover },
-                // { src: minecraftSword, matched: false, cardBack: minecraftCover },
-                // { src: pandas, matched: false, cardBack: minecraftCover },
-                // { src: portal, matched: false, cardBack: minecraftCover },
-                // { src: steve, matched: false, cardBack: minecraftCover },
-                // { src: villager, matched: false, cardBack: minecraftCover }
+                { src: diamondArmor, matched: false, cardBack: minecraftCover },
+                { src: enderDragon, matched: false, cardBack: minecraftCover },
+                { src: hanginOut, matched: false, cardBack: minecraftCover },
+                { src: minecraftSword, matched: false, cardBack: minecraftCover },
+                { src: portal, matched: false, cardBack: minecraftCover },
+                { src: steve, matched: false, cardBack: minecraftCover },
+                { src: villager, matched: false, cardBack: minecraftCover }
             ]
             break;
         case 'Alphabet':
@@ -208,7 +195,6 @@ import venus from '../../images/planets/venus.jpg'
         case 'Princesses':
             cardImages = [
                 { src: ariel, matched: false, cardBack: princessCover },
-                // { src: aurora, matched: false, cardBack: princessCover },
                 { src: belle, matched: false, cardBack: princessCover },
                 { src: elsa, matched: false, cardBack: princessCover },
                 { src: jasmine, matched: false, cardBack: princessCover },
@@ -222,7 +208,6 @@ import venus from '../../images/planets/venus.jpg'
 
         case 'Minions':
             cardImages = [
-                // { src: djminion, matched: false, cardBack: minionCover },
                 { src: jelli, matched: false, cardBack: minionCover },
                 { src: number1, matched: false, cardBack: minionCover },
                 { src: group, matched: false, cardBack: minionCover },
@@ -245,20 +230,11 @@ import venus from '../../images/planets/venus.jpg'
                 { src: seven, matched: false, cardBack: coverNumber },
                 { src: eight, matched: false, cardBack: coverNumber },
                 { src: nine, matched: false, cardBack: coverNumber },
-                // { src: ten, matched: false, cardBack: coverNumber }
             ]
             break;
         default:
             break;
     }
-
-    // const chooseSome () => {
-    //     card.Alphabet =
-    //     cardImages[Math.floor(Math.random)]
-
-    // }
-
-
 
     const [cards, setCards] = useState([]);
     const [turns, setTurns] = useState(0);
@@ -266,9 +242,7 @@ import venus from '../../images/planets/venus.jpg'
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [savedRecord, setSavedRecord] = useState(getRecord());
     const [addRecord] = useMutation(ADD_RECORD);
-    const [highScore, setHighScore ] = useState(Math.min(...getRecord()));
 
     const handleClose = () => {
         setShowModal(false)
@@ -278,10 +252,6 @@ import venus from '../../images/planets/venus.jpg'
     const handleShow = () => {
         setShowModal(true);
     };
-
-    useEffect(() => {
-        return () => saveRecord(savedRecord);
-    });
 
     
     //shuffle cards
@@ -297,7 +267,7 @@ import venus from '../../images/planets/venus.jpg'
     
     };
 
-     //if all cards are matched then win--  get 10 points and option to play again/next level
+     //if all cards are matched then win
     const matchedData = (cards.filter(card => card.matched === false));
 
     const toggleEndGame = async () => {
@@ -382,13 +352,11 @@ import venus from '../../images/planets/venus.jpg'
         setShowModal(false)
     }, [card] )
 
-    //level 1- 6 cards/level 2- 10/level 3- 14 /add 10 sparks for each win
 
 
 
     //if turns ===45 then game over ---- this is on line 312
-    // else win/confetti ---needs set timeout 
-    // score/record keeping with mutation 
+    // else win/confetti
 
 
     return (
@@ -412,10 +380,7 @@ import venus from '../../images/planets/venus.jpg'
           </div>
         )}
         <p className="turns">Turns: {turns}</p>
-        {getRecord().length > 0 ? (
-            <div>
-              <span className="bold">Best Score:</span> {highScore} 
-        </div>) : null }
+        
         {showModal ? (
         <> 
           <Modal show={showModal} onHide={handleClose}  aria-labelledby="contained-modal-title-vcenter" centered={true}

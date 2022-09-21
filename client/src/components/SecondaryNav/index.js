@@ -7,9 +7,8 @@ import { Link } from 'react-router-dom';
 
 
 
-
 const secondaryNav = () => {
-
+  
 
     return (
       
@@ -19,9 +18,9 @@ const secondaryNav = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto ">
-              <Nav.Link><Contact/></Nav.Link>
-              <Nav.Link as={Link} to="/records">Records</Nav.Link>
-              <Nav.Link onClick={auth.logout}>Logout</Nav.Link> 
+              <Nav.Link className='text-primary'><Contact/></Nav.Link>
+              <Nav.Link className='text-primary' as={Link} to="/records">Records</Nav.Link>
+              <Nav.Link className='text-primary' onClick={auth.logout}>Logout</Nav.Link> 
             </Nav>
           </Navbar.Collapse>
         </Container>

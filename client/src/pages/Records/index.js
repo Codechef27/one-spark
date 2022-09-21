@@ -1,23 +1,22 @@
 import { Tab, Tabs, Table } from 'react-bootstrap'
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_USERS } from "../../utils/queries";
-import { useEffect, useState } from 'react';
 
 
 const Records = () => {
-  const { data, error } = useQuery(QUERY_USER, QUERY_USERS);
+  const { data } = useQuery(QUERY_USER, QUERY_USERS);
 
 
 
   const user = data?.user || {};
-  const allUsers = data?.users || [];
+  //const allUsers = data?.users || [];
   const personalBest = []
 
-console.log(allUsers)
+console.log(user.records)
   //filter each game for lowest score 
 try{
-  const mcraft = user.records?.filter((item) => item.gameTitle === 'Minecraft')
-    const princesses = user.records?.filter((item) => item.gameTitle === 'Princesses')
+  const mcraft =  user.records?.filter((item) => item.gameTitle === 'Minecraft')
+    const princesses =  user.records?.filter((item) => item.gameTitle === 'Princesses')
 
     const mpoints = []
     const ppoints = []
@@ -49,44 +48,6 @@ try{
 }catch(err){
   console.log(err)
 }
-    
-  
-
-
-
-
-  //   // sort with asending order
-  //   return filter.sort((a, b) => {
-  //     if ( a.score === b.score){
-  //         return b.score - a.score;
-  //     } else{
-  //         return b.score - a.score;
-  //     }
-  // })
-
-  //console.log(uniqueMcraft)
-
-
-  //   const renderUserData = (data,_id) => {
-  //     return (
-  //       <tr key={data._id}>
-  //         <td>{1}</td>
-  //         <td>{data.records.gameTitle}</td>
-  //         <td>{data.records.points}</td>
-  //       </tr>
-  //     );   
-  //   }
-
-  //   const renderAllUsersData = (data, _id) => {
-  //     return (
-  //       <tr key={_id}>
-  //         <td>{1}</td>
-  //         <td>{data.username}</td>
-  //         <td>{data.records.gameTitle}</td>
-  //         <td>{data.records.points}</td>
-  //       </tr>
-  //     );   
-  //   }
 
 
 
@@ -103,6 +64,7 @@ try{
               <th>Best Moves</th>
             </tr>
           </thead>
+          {/* {user.records.length !== 0 ? ( */}
           <tbody>
             {personalBest?.map(({  gameTitle, points }, i) => (
               <tr key={i}>
@@ -112,6 +74,9 @@ try{
               </tr>
             ))}
           </tbody>
+          {/* ) 
+          : (<h1>Play a game</h1>)} */}
+          
         </Table>
 
       </Tab>
