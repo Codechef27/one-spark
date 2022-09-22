@@ -39,7 +39,7 @@
   
   ## Installation 
   
-  No Installation required, just go to the website and create an account or log in.  #[One-Spark](https://deployed-site)
+  No Installation required, just go to the website and create an account or log in.  #[One-Spark](https://one-spark.herokuapp.com/)
 
   ## User Story
   AS A student, game enthusiast or individual who would like to improve my memory skills
