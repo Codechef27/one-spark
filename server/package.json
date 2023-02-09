@@ -13,10 +13,12 @@
     },
     "dependencies": {
         "apollo-server-express": "^3.10.2",
+        "aws-sdk": "^2.1311.0",
         "bcrypt": "^5.0.1",
         "express": "^4.18.1",
         "graphql": "^16.6.0",
         "jsonwebtoken": "^8.5.1",
-        "mongoose": "^6.6.0"
+        "mongoose": "^6.6.0",
+        "uuid": "^9.0.0"
     }
 }
