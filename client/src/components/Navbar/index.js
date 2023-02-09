@@ -19,14 +19,14 @@ import auth from '../../utils/auth';
                  <Navbar.Toggle aria-controls="basic-navbar-nav" className="justify-content-end" />
                  <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                    <Nav>
-                     <Nav.Link as={Link} to='game/Minecraft'>Minecraft</Nav.Link>
-                     <Nav.Link as={Link} to='game/Princesses'>Princesses</Nav.Link>
-                     <Nav.Link as={Link} to='game/Dinosaurs'>Dinosaurs</Nav.Link>
-                     <Nav.Link as={Link} to='game/Minions'>Minions</Nav.Link>
+                     <Nav.Link as={Link} to='/game/Minecraft'>Minecraft</Nav.Link>
+                     <Nav.Link as={Link} to='/game/Princesses'>Princesses</Nav.Link>
+                     <Nav.Link as={Link} to='/game/Dinosaurs'>Dinosaurs</Nav.Link>
+                     <Nav.Link as={Link} to='/game/Minions'>Minions</Nav.Link>
                      <NavDropdown title="Educational">
-                       <NavDropdown.Item as={Link} to="game/Alphabet">ABC'S</NavDropdown.Item>
-                       <NavDropdown.Item as={Link} to="game/Numbers">Numbers</NavDropdown.Item>
-                       <NavDropdown.Item as={Link} to="game/Planets">Planets</NavDropdown.Item>
+                       <NavDropdown.Item as={Link} to="/game/Alphabet">ABC'S</NavDropdown.Item>
+                       <NavDropdown.Item as={Link} to="/game/Numbers">Numbers</NavDropdown.Item>
+                       <NavDropdown.Item as={Link} to="/game/Planets">Planets</NavDropdown.Item>
                      </NavDropdown>
                    </Nav>
                  </Navbar.Collapse>

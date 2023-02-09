@@ -19,5 +19,9 @@
     "homepage": "https://github.com/Codechef27/one-spark#readme",
     "devDependencies": {
         "concurrently": "^7.4.0"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.1311.0",
+        "uuid": "^9.0.0"
     }
 }
